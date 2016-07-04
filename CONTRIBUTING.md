@@ -17,6 +17,7 @@ Como já dito, os commits devem ser feitos no `dev` ou em outro branch paralelo.
 - Não faça commit de algo inacabado
 - Certifique-se de realizar o merge corretamente (caso seja necessário) antes de fazer o push.
 - Evite `push -f`
+- Use `push origin dev`
 
 ## Issues
 

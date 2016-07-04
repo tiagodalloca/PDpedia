@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <title>PDpedia</title>
+</head>
+
+<body>
+    <script src="js/jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+
+    <style media="screen">
+        .dropdown-large {
+            position: static !important;
+        }
+
+        .form-horizontal .form-group {
+          margin-left: 10px;
+          margin-right: 5px;
+        }
+
+        .dropdown-menu{
+          margin-right: 15px;
+        }
+
+        .dropdown-menu-large {
+            margin-left: 16px;
+            margin-right: 32px;
+            padding: 20px 0px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $('.dropdown-menu').find('form').click(function(e) {
+            e.stopPropagation();
+        });
+    </script>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <!--  Esse é um daqueles botões de "hambúrger"-->
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">PDpedia</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Artigos</a></li>
+                    <li><a href="#">Coisinhas</a></li>
+                    <li class="dropdown dropdown-large">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          Login
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="loginID" class="control-label">ID</label>
+                                        <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="loginPass" class="control-label">Password</label>
+                                        <input type="password" class="form-control" id="loginPass" placeholder="Enter Password">
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <h1>Aqui é onde deve ficar um site daqueles bem top</h1>
+</body>
+
+</html>
