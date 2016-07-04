@@ -74,11 +74,13 @@
       break;
 
     case 'delete':
-      # code...
+      $query = "DELETE FROM `$tabela` WHERE `$first_key`=:valor";
+      $comandos[] = $db->prepare($query);
+      $comandos[0]->bindValue(":valor", $args->$first_key, SQLITE3_TEXT);
       break;
 
     default:
-      # code...
+      # altos codes...
       break;
   }
 
