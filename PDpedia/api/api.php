@@ -1,6 +1,6 @@
-<script src="http://localhost/COTUCA/PDpedia/template/lib/jquery-2.1.4.js" charset="utf-8"></script>
-
 <?php
+
+  header('Content-Type: application/json; charset=utf-8');
 
   $db = new SQLite3("banco\banquinho.db");
   $metodo = $_SERVER['REQUEST_METHOD'];
@@ -49,6 +49,9 @@
         $comandos[$cont]->bindValue(":valor", $primeiroValor, SQLITE3_TEXT);
         $cont++;
       }
+
+      $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+      $comandos[$cont]->bindValue(':valor', $args->$first_key, SQLITE3_TEXT);
       break;
 
     case 'put':
@@ -74,9 +77,11 @@
       break;
 
     case 'delete':
-      $query = "DELETE FROM `$tabela` WHERE `$first_key`=:valor";
-      $comandos[] = $db->prepare($query);
-      $comandos[0]->bindValue(":valor", $args->$first_key, SQLITE3_TEXT);
+      $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+      $comandos[0]->bindValue(':valor', $args->$first_key, SQLITE3_TEXT);
+
+      $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
+      $comandos[1]->bindValue(":valor", $args->$first_key, SQLITE3_TEXT);
       break;
 
     default:
@@ -84,17 +89,25 @@
       break;
   }
 
+  $ret = array();
+
   foreach ($comandos as $key => $value) {
     $coisa = $value->execute();
-    $ret = array();
     try {
       while ($arr = $coisa->fetchArray(SQLITE3_ASSOC)) {
         $ret[] = $arr;
       }
-      echo json_encode($ret);
-    } catch (Exception $e) {
-      echo "[]";
+    }
+    catch(Exception $e){
+
     }
   }
 
+  // array_walk_recursive($ret, function(&$item){
+  //   if(mb_detect_encoding($item) == "UTF-8"){
+  //     $item = utf8_decode($item);
+  //   }
+  // });
+
+  echo json_encode($ret, JSON_UNESCAPED_UNICODE);
  ?>
