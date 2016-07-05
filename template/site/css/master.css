@@ -1,0 +1,52 @@
+body {
+    overflow-x: hidden;
+}
+
+/*
+########
+  MENU
+########
+*/
+.navbar{
+  font-size: 17px;
+}
+
+.dropdown-large {
+    position: static !important;
+}
+.form-horizontal .form-group {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+#div-form-login {
+    z-index: 3;
+    background-color: white;
+}
+.dropdown-menu-large {
+    margin-left: 16px;
+    margin-right: 32px;
+    padding: 20px 0px;
+}
+
+/*
+###########
+  CONTENT
+###########
+*/
+
+#content .pagina{
+  height: 100vh;
+}
+
+#hero {
+    background-color: #feffee;
+}
+.apresentacao {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#artigos{
+  background-color: #ffefee;
+}
