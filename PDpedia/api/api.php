@@ -2,6 +2,18 @@
 
   header('Content-Type: application/json; charset=utf-8');
 
+
+  // Transforma Warnings do SQLite em Exceptions to PHP
+  set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+    // error was suppressed with the @-operator
+    if (0 === error_reporting()) {
+        return false;
+    }
+
+    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+  });
+
+
   if (isset($_SERVER['PATH_INFO']))
   {
     $db = new SQLite3("banco\banquinho.db");
@@ -23,6 +35,7 @@
     }
 
     $comandos = array();
+    $comandosParaRealizarFetchArray = array();
 
     switch (strtolower($metodo)) {
       case 'get':
@@ -35,6 +48,9 @@
         }
         else
           $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
+
+          $comandosParaRealizarFetchArray[] = 0;
+
         break;
 
       case 'post':
@@ -54,6 +70,7 @@
 
         $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[$cont]->bindValue(':valor', $args->$first_key, SQLITE3_TEXT);
+        $comandosParaRealizarFetchArray[] = $cont;
         break;
 
       case 'put':
@@ -67,8 +84,7 @@
 
         $colunas = rtrim($colunas, ",").")";
         $valores = rtrim($valores, ",").")";
-        echo "INSERT INTO `$tabela` $colunas VALUES $valores";
-        $comandos[0] = $db->prepare("INSERT INTO `$tabela` $colunas VALUES $valores");
+        $comandos[0] = $db->prepare("INSERT OR FAIL INTO `$tabela` $colunas VALUES $valores");
 
         $cont = 1;
         foreach ($args as $key => $value) {
@@ -76,11 +92,15 @@
           $cont++;
         }
 
+        $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        $comandos[1]->bindValue(':valor', $args->$first_key, SQLITE3_TEXT);
+        $comandosParaRealizarFetchArray[] = 1;
         break;
 
       case 'delete':
         $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[0]->bindValue(':valor', $args->$first_key, SQLITE3_TEXT);
+        $comandosParaRealizarFetchArray[] = 0;
 
         $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[1]->bindValue(":valor", $args->$first_key, SQLITE3_TEXT);
@@ -94,20 +114,22 @@
     $ret = array();
 
     foreach ($comandos as $key => $value) {
-      $coisa = $value->execute();
       try {
-        while ($arr = $coisa->fetchArray(SQLITE3_ASSOC)) {
-          $ret[] = $arr;
-        }
+        $coisa = $value->execute();
+        if (in_array($key, $comandosParaRealizarFetchArray))
+          while ($arr = $coisa->fetchArray(SQLITE3_ASSOC)) {
+            $ret[] = $arr;
+          }
       }
-      catch(Exception $e){
-
+      catch(ErrorException $e){
+        // Não vai executar os outros comandos
+        break;
       }
     }
 
     // array_walk_recursive($ret, function(&$item){
-    //   if(mb_detect_encoding($item) == "UTF-8"){
-    //     $item = utf8_decode($item);
+    //   if(mb_detect_encoding($item) != "UTF-8"){
+    //     $item = utf8_encode($item);
     //   }
     // });
 
@@ -117,5 +139,5 @@
   else {
     echo "[]";
   }
-  
+
  ?>
