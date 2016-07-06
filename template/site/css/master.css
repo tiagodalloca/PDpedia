@@ -1,5 +1,5 @@
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /*
@@ -7,25 +7,25 @@ body {
   MENU
 ########
 */
-.navbar{
+
+.navbar {
   font-size: 17px;
 }
-
 .dropdown-large {
-    position: static !important;
+  position: static !important;
 }
 .form-horizontal .form-group {
-    margin-left: 10px;
-    margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 #div-form-login {
-    z-index: 3;
-    background-color: white;
+  z-index: 3;
+  background-color: white;
 }
 .dropdown-menu-large {
-    margin-left: 16px;
-    margin-right: 32px;
-    padding: 20px 0px;
+  margin-left: 16px;
+  margin-right: 32px;
+  padding: 20px 0px;
 }
 
 /*
@@ -34,19 +34,63 @@ body {
 ###########
 */
 
-#content .pagina{
-  height: 100vh;
+
+/*
+  ### GERAL
+*/
+
+#content .pagina {
+  min-height: 50vh;
 }
+.align-middle {
+  /*position: absolute;
+  top: 50%;
+  transform: translateY(-50%);*/
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+
+/*
+  ### HERO
+*/
 
 #hero {
-    background-color: #feffee;
+  background-color: #feffee;
+  height: 100vh;
 }
 .apresentacao {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-#artigos{
+/*
+  ### ARTIGOS
+*/
+
+#artigos {
   background-color: #ffefee;
+}
+#artigos #artigos-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+}
+#artigos-wrapper .list-group {
+  min-height: 80%;
+  border-color: #0a2979;
+}
+#artigos-wrapper .list-group .list-heading {
+  font-size: 23px;
+  font-weight: bold;
+  background-color: #0a2979;
+  color: white;
+}
+
+#artigos-wrapper label{
+  margin-bottom: 6  0px;
+  margin-top: 30px;
+  font-size: 23px;
 }
