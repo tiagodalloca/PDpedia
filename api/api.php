@@ -13,28 +13,45 @@
     throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
   });
 
-
   if (isset($_SERVER['PATH_INFO']))
   {
     $db = new SQLite3("banco\banquinho.db");
     $metodo = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+
+    $token = null;
     $tabela = $request[0];
     $args = null;
-    $first_key = null;
 
     if(sizeof($request) > 1){
       $args = json_decode($request[1]);
+      $posDoiPontos = strpos($request[1], ":");
+      if ($posDoiPontos)
+        $token = substr($request[1], $posDoiPontos);
+    }
+
+    $ret = lidarComRequest($metodo, $tabela, $args, $token, $db);
+    echo json_encode($ret, JSON_UNESCAPED_UNICODE);
+  }
+
+  function lidarComRequest($metodo, $tabela, $args, $token, $db){
+
+    $tokenValido = validarToken($token, $db);
+
+    $first_key = null;
+
+    if ($args){
       reset($args);
       // poderá ser usada para ordenação
       // {"ID" : 2, "Nome": "João"} => first_key = "ID"
       $first_key = key($args);
-
-      // Evita SQL injection
-      // $first_key = str_replace("'", "", $first_key);
     }
 
+    // Array que contém os comandos a serem executados
     $comandos = array();
+
+    // Array de números que contém os índices dos comandos que necessitam
+    // realizar fetchArray
     $comandosParaRealizarFetchArray = array();
 
     switch (strtolower($metodo)) {
@@ -48,7 +65,6 @@
         }
         else
           $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
-
           $comandosParaRealizarFetchArray[] = 0;
 
         break;
@@ -105,10 +121,6 @@
         $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[1]->bindValue(":valor", $args->$first_key, SQLITE3_TEXT);
         break;
-
-      default:
-        # altos codes...
-        break;
     }
 
     $ret = array();
@@ -127,17 +139,50 @@
       }
     }
 
-    // array_walk_recursive($ret, function(&$item){
-    //   if(mb_detect_encoding($item) != "UTF-8"){
-    //     $item = utf8_encode($item);
-    //   }
-    // });
+    switch ($tabela) {
+      case 'Usuario':
+        foreach ($ret as $key => $arr) {
+          unset($arr["Senha"]);
+          $ret[$key] = $arr;
+        }
+        break;
 
-    echo json_encode($ret, JSON_UNESCAPED_UNICODE);
+      default:
+        # code...
+        break;
+    }
+
+    return $ret;
   }
 
-  else {
-    echo "[]";
+  function validarToken($token, $db)
+  {
+    if ($token)
+    {
+      $comando = $db->prepare("SELECT * FROM Token WHERE `Valor`=:valor");
+      $comando->bindValue(':valor', $token, SQLITE3_TEXT);
+
+      try {
+        $coisa = $comando->execute();
+        $arr = $coisa->fetchArray(SQLITE3_ASSOC);
+
+        if ($arr){
+          $agora = new DateTime();
+          $criacaoToken = new DateTime($arr["DataCriacao"]);
+          $intervalo = $agora->diff($criacaoToken, true);
+
+          if ($intervalo->h < $arr["HorasDeValidade"])
+            return true;
+
+          else
+            return false;
+        }
+      }
+      catch(ErrorException $e){
+        return false;
+      }
+
+    }
   }
 
  ?>
