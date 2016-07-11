@@ -37,135 +37,11 @@
 
     $HORAS_DE_VALIDADE_TOKEN = 4;
 
-    $first_key = null;
-    if ($args){
-      reset($args);
-      // poderá ser usada para ordenação
-      // {"ID" : 2, "Nome": "João"} => first_key = "ID"
-      $first_key = key($args);
-    }
-
-    if ($tabela == 'Logoff' && $args != null)
-    {
-      $metodo = "delete";
-      $tabela = "Token";
-      $token = $args["Valor"];
-    }
-
-    $tokenValido = validarToken($token, $db);
-
     $ret = array();
 
-    if ($tabela == 'Login' && $args != null)
-    {
-      $comando = $db->prepare("SELECT * FROM Usuario WHERE `ID` = :id AND `Senha` = :senha");
-      $comando->bindValue(':id', $args["ID"], SQLITE3_TEXT);
-      $comando->bindValue(':senha', $args["Senha"], SQLITE3_TEXT);
-
-      try {
-        $coisa = $comando->execute();
-        //Usuario com aquele nome e com aquela senha existe?
-        if($coisa->fetchArray(SQLITE3_ASSOC)){
-          $data = date('Y-m-d H:i:s');
-          $token = md5(uniqid(rand(), true));
-          $comando = $db->prepare("INSERT INTO Token VALUES (:token, :dataCriacao, :validade, :usuario_id)");
-          $comando->bindValue(':token',$token, SQLITE3_TEXT);
-          $comando->bindValue(':dataCriacao',$data, SQLITE3_TEXT);
-          $comando->bindValue(':validade', $HORAS_DE_VALIDADE_TOKEN, SQLITE3_TEXT);
-          $comando->bindValue(':usuario_id', $args["ID"], SQLITE3_TEXT);
-          $comando->execute();
-
-          $ret["Valor"] = $token;
-          $ret["DataCriacao"] = $data;
-          $ret["HorasDeValidade"] = $HORAS_DE_VALIDADE_TOKEN;
-          $ret["fk_UsuarioID"] = $args["ID"];
-          return $ret;
-        }
-        else
-          return $ret;
-      }
-      catch(ErrorException $e){
-        echo $e;
-        return $ret;
-      }
-    }
-
-    // Array que contém os comandos a serem executados
-    $comandos = array();
-
-    // Array de números que contém os índices dos comandos que necessitam
-    // realizar fetchArray
-    $comandosParaRealizarFetchArray = array();
-
-    // Não é necessário token para um método get
-    if ($metodo == 'get'){
-      if ($first_key){
-        $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
-        $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
-      }
-      else
-        $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
-        $comandosParaRealizarFetchArray[] = 0;
-    }
-
-    else if ($tokenValido){
-      switch ($metodo) {
-        case 'post':
-          $cont = 0;
-          foreach ($args as $key => $value) {
-            if ($key == $first_key){
-              $primeiroValor = $value;
-              continue;
-            }
-
-            $query = "UPDATE `$tabela` SET `$key`=:novo WHERE `$first_key`=:valor";
-            $comandos[$cont] = $db->prepare($query);
-            $comandos[$cont]->bindValue(":novo", $value, SQLITE3_TEXT);
-            $comandos[$cont]->bindValue(":valor", $primeiroValor, SQLITE3_TEXT);
-            $cont++;
-          }
-
-          $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
-          $comandos[$cont]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
-          $comandosParaRealizarFetchArray[] = $cont;
-          break;
-
-        case 'put':
-          $colunas = "(";
-          $valores = "(";
-
-          foreach ($args as $key => $value) {
-            $colunas = $colunas."`".$key."` ,";
-            $valores = $valores."?,";
-          }
-
-          $colunas = rtrim($colunas, ",").")";
-          $valores = rtrim($valores, ",").")";
-          $comandos[0] = $db->prepare("INSERT OR FAIL INTO `$tabela` $colunas VALUES $valores");
-
-          $cont = 1;
-          foreach ($args as $key => $value) {
-            $comandos[0]->bindValue($cont, $value, SQLITE3_TEXT);
-            $cont++;
-          }
-
-          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
-          $comandos[1]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
-          $comandosParaRealizarFetchArray[] = 1;
-          break;
-
-        case 'delete':
-          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
-          $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
-          $comandosParaRealizarFetchArray[] = 0;
-
-          $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
-          $comandos[1]->bindValue(":valor", $args[$first_key], SQLITE3_TEXT);
-          break;
-      }
-    }
-
-    $ret = array();
+    $hue = prepararQuery($token, $metodo, $tabela, $args, $db);
+    $comandos = $hue["comandos"];
+    $comandosParaRealizarFetchArray = $hue["comandosParaRealizarFetchArray"];
 
     foreach ($comandos as $key => $value) {
       try {
@@ -183,53 +59,216 @@
 
     switch ($tabela) {
       case 'Usuario':
-        foreach ($ret as $key => $arr) {
-          unset($arr["Senha"]);
-          $ret[$key] = $arr;
+        if ($metodo == 'get')
+          foreach ($ret as $key => $arr) {
+            unset($arr["Senha"]);
+            $ret[$key] = $arr;
+          }
+        else if (sizeof($ret) > 0){
+          $ret = $ret[0];
+          unset($ret["Senha"]);
         }
         break;
 
       case 'Token':
-      foreach ($ret as $key => $arr) {
-        unset($arr["Valor"]);
-        $ret[$key] = $arr;
-      }
+      if ($metodo == 'get')
+        foreach ($ret as $key => $arr) {
+          unset($arr["Valor"]);
+          $ret[$key] = $arr;
+        }
+      else if (sizeof($ret) > 0)
+        $ret = $ret[0];
       break;
     }
 
     return $ret;
   }
 
+  function prepararQuery($token, $metodo, $tabela, $args, $db)
+  {
+    // Não é necessário token para um método get
+    if ($metodo == 'get')
+      return queryGenerica($metodo, $tabela, null, $args, $db);
+
+    else
+    {
+      if ($tabela == 'Usuario'){
+        if ($metodo == "post"){
+          $tokenValido = validarToken($token, $db);
+          if ($tokenValido){
+            unset($args["ID"]);
+
+            return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
+          }
+        }
+      }
+
+      else if ( $tabela == 'Artigo' ||
+                $tabela == 'Acontecimento' ||
+                $tabela == 'Biografia'){
+        if ($metodo == "post")
+        {
+          $tokenValido = validarToken($token, $db);
+          if ($tokenValido)
+          {
+            unset($args["ID"]);
+            unset($args["fk_IDUsuario"]);
+
+            return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
+          }
+        }
+        else if ($metodo == "put")
+        {
+          $tokenValido = validarToken($token, $db);
+          if ($tokenValido)
+          {
+            unset($args["ID"]);
+
+            $args["fk_IDUsuario"] = $tokenValido["fk_IDUsuario"];
+            $args["Data"] = date('Y-m-d H:i:s');
+
+            return queryGenerica($metodo, $tabela, null, $args, $db);
+          }
+        }
+      }
+      else if ($tabela == 'Token'){
+        if ($metodo == "put")
+        {
+          $args["fk_IDUsuario"] = $args["IDUsuario"];
+
+          unset($args["IDUsuario"]);
+          unset($args["Senha"]);
+
+          $args["DataCriacao"] = date('Y-m-d H:i:s');
+          $args["HorasDeValidade"] = 4;
+          $args["Chave"] = md5(uniqid(rand(), true));
+
+          return queryGenerica($metodo, $tabela, null, $args, $db);
+        }
+        else if ($metodo == "delete")
+        {
+          unset($args["DataCriacao"]);
+          unset($args["HorasDeValidade"]);
+          unset($args["fk_IDUsuario"]);
+
+          if ($args["Chave"])
+            return queryGenerica($metodo, $tabela, null, $args, $db);
+        }
+      }
+    }
+
+    return array("comandos" => array(), "comandosParaRealizarFetchArray" => array());
+  }
+
+  function queryGenerica($metodo, $tabela, $first_key, $args, $db)
+  {
+    if ($args && $first_key == null){
+      reset($args);
+      // poderá ser usada para ordenação
+      // {"ID" : 2, "Nome": "João"} => first_key = "ID"
+      $first_key = key($args);
+    }
+
+    $comandos = array();
+    $comandosParaRealizarFetchArray = array();
+    switch ($metodo) {
+      case 'get':
+        if ($first_key){
+          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+          $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
+        }
+        else
+          $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
+          $comandosParaRealizarFetchArray[] = 0;
+        break;
+      case 'post':
+        $cont = 0;
+        foreach ($args as $key => $value) {
+          if ($key == $first_key){
+            $primeiroValor = $value;
+            continue;
+          }
+
+          $query = "UPDATE `$tabela` SET `$key`=:novo WHERE `$first_key`=:valor";
+          $comandos[$cont] = $db->prepare($query);
+          $comandos[$cont]->bindValue(":novo", $value, SQLITE3_TEXT);
+          $comandos[$cont]->bindValue(":valor", $primeiroValor, SQLITE3_TEXT);
+          $cont++;
+        }
+
+        $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        $comandos[$cont]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
+        $comandosParaRealizarFetchArray[] = $cont;
+        break;
+
+      case 'put':
+        $colunas = "(";
+        $valores = "(";
+
+        foreach ($args as $key => $value) {
+          $colunas = $colunas."`".$key."` ,";
+          $valores = $valores."?,";
+        }
+
+        $colunas = rtrim($colunas, ",").")";
+        $valores = rtrim($valores, ",").")";
+        $comandos[0] = $db->prepare("INSERT OR FAIL INTO `$tabela` $colunas VALUES $valores");
+
+        $cont = 1;
+        foreach ($args as $key => $value) {
+          $comandos[0]->bindValue($cont, $value, SQLITE3_TEXT);
+          $cont++;
+        }
+
+        $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        $comandos[1]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
+        $comandosParaRealizarFetchArray[] = 1;
+        break;
+
+      case 'delete':
+        $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
+        $comandosParaRealizarFetchArray[] = 0;
+
+        $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
+        $comandos[1]->bindValue(":valor", $args[$first_key], SQLITE3_TEXT);
+        break;
+    }
+
+    return array( "comandos" => $comandos,
+                  "comandosParaRealizarFetchArray" => $comandosParaRealizarFetchArray);
+  }
+
   function validarToken($token, $db)
   {
     if ($token != null)
     {
-      $comando = $db->prepare("SELECT * FROM Token WHERE `Valor`= :valor");
+      $comando = $db->prepare("SELECT * FROM Token WHERE `Chave`= :valor");
       $comando->bindValue(':valor', $token, SQLITE3_TEXT);
 
       try {
         $coisa = $comando->execute();
-        $linhas = $coisa->fetchArray(SQLITE3_ASSOC);
+        $linha = $coisa->fetchArray(SQLITE3_ASSOC);
 
-        if ($linhas){
+        if ($linha){
           $agora = new DateTime();
-          $criacaoToken = new DateTime($linhas["DataCriacao"]);
+          $criacaoToken = new DateTime($linha["DataCriacao"]);
           $intervalo = $agora->diff($criacaoToken, true);
 
-          if ($intervalo->h < $linhas["HorasDeValidade"])
-            return true;
+          if ($intervalo->h < $linha["HorasDeValidade"])
+            return $linha;
 
           else
-            return false;
+            return null;
         }
       }
       catch(ErrorException $e){
         echo $e;
-        return false;
+        return null;
       }
     }
 
-    return false;
+    return null;
   }
 
  ?>
