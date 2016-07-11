@@ -16,7 +16,7 @@ Se atente ao **método** da requisição.
 ### GET
 
 | Tabela | Campos retornados | Detalhes | Requer _token_ |
-| --- || --- || --- || --- |
+| --- | --- | --- | --- |
 | Usuario | ID, Nome, Suspenso | `Senha` não é retornado | ✗ |
 | Artigo | ID, Texto, Titulo, fk_IDUsuario, Data | - | ✗ |
 | Acontecimento | ID, Texto, Titulo, fk_IDUsuario, DataAcontecimento, Data | - | ✗ |
@@ -27,7 +27,7 @@ Se atente ao **método** da requisição.
 ### PUT
 
 | Tabela | Campos fornecidos | Campos retornados | Detalhes | Requer _token_ |
-| --- || --- || --- || --- |
+| --- | --- | --- | --- | --- |
 | Artigo | Texto, Titulo | ID, Texto, Titulo, fk_IDUsuario, Data | `fk_IDUsuario` é preenchido através do token fornecido e `Data` é do sistema | ✓ |
 | Acontecimento | Texto, Titulo, DataAcontecimento | ID, Texto, Titulo, fk_IDUsuario, DataAcontecimento, Data | `fk_IDUsuario` é preenchido através do token fornecido e `Data` é do sistema | ✓ |
 | Biografia | Texto, Nome | ID, Texto, Nome, fk_IDUsuario, Data | `fk_IDUsuario` é preenchido através do token fornecido e `Data` é do sistema | ✓ |
@@ -36,7 +36,7 @@ Se atente ao **método** da requisição.
 ### POST
 
 | Tabela | Campos fornecidos | Campos retornados | Detalhes | Requer _token_ |
-| --- || --- || --- || --- |
+| --- | --- | --- | --- | --- |
 | Usuario | Nome, Senha | ID, Nome, Suspenso | Não é possível alterar o campo `Suspenso`; <br> ID usado na query é o do token fornecido; <br> `Senha` não é retornado. | ✓ |
 | Artigo | ID, Texto, Titulo | ID, Texto, Titulo, fk_IDUsuario, Data | `ID` e `fk_IDUsuario` não são alterados | ✓ |
 | Acontecimento | ID, Texto, Titulo, DataAcontecimento | ID, Texto, Titulo, fk_IDUsuario, DataAcontecimento, Data | `ID` e `fk_IDUsuario` não são alterados | ✓ |
@@ -45,7 +45,7 @@ Se atente ao **método** da requisição.
 ### DELETE
 
 | Tabela | Campos fornecidos | Campos retornados | Detalhes | Requer _token_ |
-| --- || --- || --- || --- |
+| --- | --- | --- | --- | --- |
 | Token | Chave | Chave, DataCriacao, HorasDeValidade, fk_IDUsuario | Se `Chave` fornecida não existir, retorna objeto vazio `{}` | ✗ |
 
 
