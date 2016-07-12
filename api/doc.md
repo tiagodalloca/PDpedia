@@ -85,3 +85,60 @@ Retorno: <br>
 ```
 
 Note que `Senha` não é retornado.
+
+## Tabelas
+
+Essa é uma lista com todas as tabelas:
+
+#### Usuario
+
+| Campo | Detalhes |
+| --- | --- |
+| **ID** | TEXT NOT NULL UNIQUE |
+| Nome | TEXT NOT NULL |
+| Senha |	TEXT NOT NULL |
+| Suspenso | INTEGER NOT NULL DEFAULT 0 |
+
+#### Artigo
+
+| Campo | Detalhes |
+| --- | --- |
+| **ID** | INTEGER NOT NULL AUTOINCREMENT UNIQUE |
+| Texto | TEXT |
+| Titulo | TEXT |
+| *fk_IDUsuario* | INTEGER NOT NULL |
+| Data | TEXT NOT NULL |
+
+#### Biografia
+
+| Campo | Detalhes |
+| --- | --- |
+| **ID** | INTEGER NOT NULL AUTOINCREMENT UNIQUE |
+| Texto | TEXT |
+| Nome | TEXT |
+| *fk_IDUsuario* | INTEGER NOT NULL |
+| Data | TEXT NOT NULL |
+
+#### Acontecimento
+
+| Campo | Detalhes |
+| --- | --- |
+| **ID** | INTEGER NOT NULL AUTOINCREMENT UNIQUE |
+| Texto | TEXT |
+| Titulo | TEXT |
+| DataAcontecimento | TEXT |
+| *fk_IDUsuario* | INTEGER NOT NULL |
+| Data | TEXT NOT NULL |
+
+#### Token
+
+| Campo | Detalhes |
+| --- | --- |
+| **Chave** | TEXT NOT NULL|
+| DataCriacao | TEXT NOT NULL|
+| HorasDeValidade | INTEGER NOT NULL |
+| *fk_IDUsuario* | INTEGER NOT NULL |
+
+Edicao_Artigo, Edicao_Biografia e Edicao_Acontecimento não inclusos.
+
+Ver [arquivo](banco/CreateDasTabelas.sql) com os comandos de criação das tabelas
