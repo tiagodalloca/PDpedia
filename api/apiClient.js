@@ -1,98 +1,82 @@
-//aqui fica aqueles códigos em javascript bem lokos
+// TODAS AS VARIÁVEIS "tipo" SIGNIFICAM A TABELA NO BANCO DE DADOS QUE SERÁ UTILIZADA, p.e. "Biografia"
 
-const formatar = function()
+// Caso passe dois objetos(tipo e o ID)
+function apiClient(tipo, meuID)
 {
-	function constructor() // parâmetros (???)
-	{
+	// variável private(pode ser útil no futuro)
+	var that = {};
 
-	}
-
-	// "tipo" serve para saber qual é o tipo de tendência a ser formatada
-	function tendencias(tipo)
+	 // Caso o Dall'Oca não tenha lido o meu comentário sobre objetos
+	if (typeof meuID === "object")
 	{
 		if (tipo.toUpperCase() == "ARTIGO")
 		{
-			// pegar todos os artigos
-			var artigosNFormatados = dadosDoBanco("Artigo");
-			// formatar os artigos
-			// altos codes...
+			var NaoFormatado = catarDoBanco("Artigo", meuID.ID);
 		}
 		else if (tipo.toUpperCase() == "ACONTECIMENTO")
 		{
-			// pegar todos os acontecimentos
-			var acontecimentosNFormatados = dadosDoBanco("Acontecimento");
-			// formatar os acontecimentos
-			// altos codes...
+			var NaoFormatado = catarDoBanco("Acontecimento", meuID.ID);
 		}
 		else if (tipo.toUpperCase() == "BIOGRAFIA")
 		{
-			// pegar todos as biografias
-			var biografiasNFormatadas = dadosDoBanco("Biografia");
-			// formatar as biografias
-			// altos codes...
+			var NaoFormatado = catarDoBanco("Biografia", meuID.ID);
 		}
 	}
-
-	// "tipo" serve para saber qual é a tabela a ser utilizada
-	// "id" serve para saber qual é o id que se está procurando
-	function especifico(tipo, id)
+	else // o Dall'Oca viu meu comentário
 	{
 		if (tipo.toUpperCase() == "ARTIGO")
 		{
-			// pegar o artigo
-			var artigoNFormatado = dadosDoBanco("Artigo", id);
-			// formatar o artigo
-			// altos codes...
+			var NaoFormatado = catarDoBanco("Artigo", meuID);
 		}
 		else if (tipo.toUpperCase() == "ACONTECIMENTO")
 		{
-			// pegar o acontecimento
-			var acontecimentoNFormatado = dadosDoBanco("Acontecimento", id);
-			// formatar o acontecimento
-			// altos codes...
+			var NaoFormatado = catarDoBanco("Acontecimento", meuID);
 		}
 		else if (tipo.toUpperCase() == "BIOGRAFIA")
 		{
-			// pegar a biografia
-			var biografiaNFormatada = dadosDoBanco("Biografia", id);
-			// formatar a biografia
-			// altos codes...
+			var NaoFormatado = catarDoBanco("Biografia", meuID);
 		}
 	}
 
-	// "tipo" serve para saber qual é a tabela a ser utilizada
-	function dadosDoBanco(tipo)
+	return {}; // se chegar aqui, o tipo está errado ou tem algo estranho(ou nada foi implementado, hehehehe)
+}
+
+// Caso passe apenas um objeto contendo o tipo e o ID
+function apiClient(obj)
+{
+	if (typeof obj === "object")
 	{
-		$.ajax(
-			{
-				url: '../../../api/api.php/'+tipo,
-	            success: function(resultText, trem1, trem2)
-	            {
-	            	return resultText;
-	            },
-	            error: function(XMLHttpRequest, textStatus, errorThrown)
-	            {
-	            	return "";
-	            }
-			});
-		// não bota return aqui, porque ou dará certo, ou dará errado.
+		if (obj.tipo.toUpperCase() == "ARTIGO")
+		{
+			var NaoFormatado = catarDoBanco("Artigo", obj.ID);
+		}
+		else if (obj.tipo.toUpperCase() == "ACONTECIMENTO")
+		{
+			var NaoFormatado = catarDoBanco("Acontecimento", obj.ID);
+		}
+		else if (obj.tipo.toUpperCase() == "BIOGRAFIA")
+		{
+			var NaoFormatado = catarDoBanco("Biografia", obj.ID);
+		}
 	}
 
-	// "tipo" serve para saber qual é a tabela a ser utilizada
-	function dadosDoBanco(tipo, id)
+	return {}; // se chegar aqui, o tipo está errado ou tem algo estranho(ou nada foi implementado, hehehehe)
+}
+
+// Função básica para evitar repetições de código
+function catarDoBanco(tipo, ID)
+{
+	$.ajax(
 	{
-		$.ajax(
-			{
-				url: '../../../api/api.php/'+tipo+'{"ID":'+id+'}',// já tentei bugar e não deu, hehehe
-	            success: function(resultText, trem1, trem2)
-	            {
-	            	return resultText;
-	            },
-	            error: function(XMLHttpRequest, textStatus, errorThrown)
-	            {
-	            	return "";
-	            }
-			});
-		// não bota return aqui, porque ou dará certo, ou dará errado.
-	}
+		url: '../../../api/api.php/'+tipo+'/{\"ID\":'+ID+'}',
+        success: function(resultText, trem1, trem2)
+        {
+        	return resultText;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown)
+        {
+        	return "";
+        	// Se occorer um erro, o usuário está tentando hackear!
+        }
+	});
 }
