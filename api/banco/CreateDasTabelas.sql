@@ -55,7 +55,7 @@ CREATE TABLE `Edicao_Acontecimento` (
 	FOREIGN KEY(fk_ID) REFERENCES Acontecimento(ID)
 )
 
-CREATE TABLE "Token" (
+CREATE TABLE `Token` (
 	`Chave`	TEXT NOT NULL,
 	`DataCriacao`	TEXT NOT NULL,
 	`HorasDeValidade`	INTEGER NOT NULL,
