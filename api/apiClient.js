@@ -10,8 +10,10 @@ if (typeof $ === 'undefined')
  * da requisição
  * @param  {String} 	metodo 	GET, POST, PUT, DELETE
  * @param  {String} 	token  	Deve ter sido fornecido pela API
- * @param  {function} succes
- * @param  {function} error
+ * @param  {function} success função que é executada caso a requisição tenha
+ * sucesso
+ * @param  {function} error   função que é executada casa a requisição sofra
+ * algum erro
  * @return {?}        				Retorno da API
  */
 var apiClient =
