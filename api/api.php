@@ -35,6 +35,9 @@
 
   function lidarComRequest($metodo, $tabela, $args, $token, $db){
 
+    if ($tabela == "")
+      return array();
+
     $HORAS_DE_VALIDADE_TOKEN = 4;
 
     $ret = array();
