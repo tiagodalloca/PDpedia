@@ -4,25 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
-  <!--   
-    <link rel="stylesheet" href="../../template/site/css/lib/normalize.css"> URLs para não ter 4 bootstraps
-    <link rel="stylesheet" href="../../template/site/css/lib/bootstrap.css">
-    <link rel="stylesheet" href="../../template/site/css/master.css">
-  -->
-  <link rel="stylesheet" href="css/lib/normalize.css">
-  <link rel="stylesheet" href="css/lib/bootstrap.css">
+  <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
+  <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
   <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
   <link rel="stylesheet" href="css/master.css">
   <title>PDpedia</title>
 </head>
 
 <body>
-  <script src="js/jquery.js" type="text/javascript"></script>
-  <script src="js/bootstrap.js" type="text/javascript"></script>
-  <!--
-    <script src="../../template/site/js/jquery.js" type="text/javascript"></script>  URLs para não ter 4 bootstraps
-    <script src="../../template/site/js/bootstrap.js" type="text/javascript"></script>
-  -->
+  <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
+  <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
   <script src="../../api/apiClient.js" type="text/javascript"></script>
   <script src="../../api/formatar.js" type="text/javascript"></script>
 
