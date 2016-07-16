@@ -1,4 +1,4 @@
-var API_PATH = "api.php/"
+var API_PATH = "../../api/api.php/"
 
 if (typeof $ === 'undefined')
   console.log("Carregue o JQuery");
@@ -19,7 +19,7 @@ if (typeof $ === 'undefined')
 var apiClient =
   (tabela, args, metodo, token, success, error) => {
 
-    var url = API_PATH + tabela + "/" + JSON.stringify(args)
+    var url = API_PATH + tabela + "/" + JSON.stringify(args);
 
     if (token != null)
       url += "/" + token;

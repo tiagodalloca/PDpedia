@@ -94,3 +94,65 @@ body {
   margin-top: 30px;
   font-size: 23px;
 }
+
+/*
+  ### ACONTECIMENTOS
+*/
+
+#acont {
+  background-color: #feffee;
+}
+#acont #acont-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+}
+#acont-wrapper .list-group {
+  min-height: 80%;
+  border-color: #0a2979;
+}
+#acont-wrapper .list-group .list-heading {
+  font-size: 23px;
+  font-weight: bold;
+  background-color: #0a2979;
+  color: white;
+}
+
+#acont-wrapper label{
+  margin-bottom: 6  0px;
+  margin-top: 30px;
+  font-size: 23px;
+}
+
+/*
+  ### BIOGRAFIA
+*/
+
+#biografia {
+  background-color: #feffee;
+}
+#biografia #biografia-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+}
+#biografia-wrapper .list-group {
+  min-height: 80%;
+  border-color: #0a2979;
+}
+#biografia-wrapper .list-group .list-heading {
+  font-size: 23px;
+  font-weight: bold;
+  background-color: #0a2979;
+  color: white;
+}
+
+#biografia-wrapper label{
+  margin-bottom: 6  0px;
+  margin-top: 30px;
+  font-size: 23px;
+}

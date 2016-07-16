@@ -14,6 +14,8 @@
 <body>
   <script src="js/jquery.js" type="text/javascript"></script>
   <script src="js/bootstrap.js" type="text/javascript"></script>
+  <script src="../../api/apiClient.js" type="text/javascript"></script>
+  <script src="../../api/formatar.js" type="text/javascript"></script>
 
   <script type="text/javascript">
     $('.dropdown-menu').find('form').click(function(e) {
@@ -85,18 +87,65 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div class="list-group">
             <a class="list-group-item list-heading text-center">Últimos artigos</a>
-            <a class="list-group-item">As 1001 DPs</a>
-            <a class="list-group-item">A verdade por trás do DPD</a>
-            <a href="" class="list-group-item">Título polêmico 3</a>
-            <a href="" class="list-group-item">Título polêmico 4</a>
-            <a href="" class="list-group-item">Título polêmico 5</a>
-            <a href="" class="list-group-item">Título polêmico 6</a>
-            <a href="" class="list-group-item">Título polêmico 7</a>
-            <a href="" class="list-group-item">Título polêmico 8</a>
+            <script type="text/javascript">tendencias("ARTIGO");</script> <!-- Pegando as últimas tendências -->
+            <a href="" id="art1" class="list-group-item"></a>
+            <a href="" id="art2" class="list-group-item"></a>
+            <a href="" id="art3" class="list-group-item"></a>
+            <a href="" id="art4" class="list-group-item"></a>
+            <a href="" id="art5" class="list-group-item"></a>
+            <a href="" id="art6" class="list-group-item"></a>
+            <a href="" id="art7" class="list-group-item"></a>
+            <a href="" id="art8" class="list-group-item"></a>
           </div>
         </div>
         <label class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
           Quer escrever o que você pensa?
+          <br>
+          <a href="">Comece aqui!</a>
+        </label>
+      </div>
+    </div>
+    <div id="acont" class="pagina container-fluid">
+      <div id="acont-wrapper" class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="list-group">
+            <a class="list-group-item list-heading text-center">Últimos Acontecimentos</a>
+            <script type="text/javascript">tendencias("ACONTECIMENTO");</script> <!-- Pegando as últimas tendências -->
+            <a href="" id="acont1" class="list-group-item"></a>
+            <a href="" id="acont2" class="list-group-item"></a>
+            <a href="" id="acont3" class="list-group-item"></a>
+            <a href="" id="acont4" class="list-group-item"></a>
+            <a href="" id="acont5" class="list-group-item"></a>
+            <a href="" id="acont6" class="list-group-item"></a>
+            <a href="" id="acont7" class="list-group-item"></a>
+            <a href="" id="acont8" class="list-group-item"></a>
+          </div>
+        </div>
+        <label class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          Quer virar um jornalista?
+          <br>
+          <a href="">Comece aqui!</a>
+        </label>
+      </div>
+    </div>
+    <div id="biografia" class="pagina container-fluid">
+      <div id="biografia-wrapper" class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="list-group">
+            <a class="list-group-item list-heading text-center">Últimas Biografias</a>
+            <script type="text/javascript">tendencias("BIOGRAFIA");</script> <!-- Pegando as últimas tendências -->
+            <a href="" id="bio1" class="list-group-item"></a>
+            <a href="" id="bio2" class="list-group-item"></a>
+            <a href="" id="bio3" class="list-group-item"></a>
+            <a href="" id="bio4" class="list-group-item"></a>
+            <a href="" id="bio5" class="list-group-item"></a>
+            <a href="" id="bio6" class="list-group-item"></a>
+            <a href="" id="bio7" class="list-group-item"></a>
+            <a href="" id="bio8" class="list-group-item"></a>
+          </div>
+        </div>
+        <label class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          Quer escrever algo sobre alguém?
           <br>
           <a href="">Comece aqui!</a>
         </label>

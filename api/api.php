@@ -10,7 +10,7 @@
   });
   if (isset($_SERVER['PATH_INFO']))
   {
-    $db = new SQLite3("banco\banquinho.db");
+    $db = new SQLite3("banco/banquinho.db");
     $metodo = strtolower($_SERVER['REQUEST_METHOD']);
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
     $token = null;
