@@ -4,6 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
+  <!--   
+    <link rel="stylesheet" href="../../template/site/css/lib/normalize.css"> URLs para não ter 4 bootstraps
+    <link rel="stylesheet" href="../../template/site/css/lib/bootstrap.css">
+    <link rel="stylesheet" href="../../template/site/css/master.css">
+  -->
   <link rel="stylesheet" href="css/lib/normalize.css">
   <link rel="stylesheet" href="css/lib/bootstrap.css">
   <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
@@ -14,12 +19,31 @@
 <body>
   <script src="js/jquery.js" type="text/javascript"></script>
   <script src="js/bootstrap.js" type="text/javascript"></script>
-  
+  <!--
+    <script src="../../template/site/js/jquery.js" type="text/javascript"></script>  URLs para não ter 4 bootstraps
+    <script src="../../template/site/js/bootstrap.js" type="text/javascript"></script>
+  -->
+  <script src="../../api/apiClient.js" type="text/javascript"></script>
+  <script src="../../api/formatar.js" type="text/javascript"></script>
+
   <script type="text/javascript">
     $('.dropdown-menu').find('form').click(function(e) {
       e.stopPropagation();
     });
   </script>
+
+  <?php
+  #  Se houver um $_GET["tipo"] válido e um $GET["id"] válido, tem que retirar 
+  #  tudo da tela e exibir apenas o objeto na tabela "tipo" com id "id" 
+  
+  if (isset($_GET["tipo"]) && isset($GET["id"]))
+  {
+    if (trim($_GET["tipo"]) != "" && trim($GET["id"]) != "") # pode juntar os dois IFs ou pode dar bugs?
+    {
+      # query para selecionar apenas um tipo específico e exibir na tela.
+    }
+  }
+  ?>
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -85,14 +109,15 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div class="list-group">
             <a class="list-group-item list-heading text-center">Últimos artigos</a>
-            <a href="" id="art1" class="list-group-item">As 1001 Dps</a>
-            <a href="" id="art2" class="list-group-item">Como programar em Delphi</a>
-            <a href="" id="art3" class="list-group-item">Aprenda sobre os atalhos do windows</a>
-            <a href="" id="art4" class="list-group-item">Quantas USBs um computador suporta?</a>
-            <a href="" id="art5" class="list-group-item">Biscoito ou bolacha?</a>
-            <a href="" id="art6" class="list-group-item">Como invadir o DPD</a>
-            <a href="" id="art7" class="list-group-item">Como fazer um pTrem</a>
-            <a href="" id="art8" class="list-group-item">Para que programar?</a>
+            <script type="text/javascript">tendencias("ARTIGO");</script> <!-- Pegando as últimas tendências -->
+            <a href="" id="art1" class="list-group-item"></a>
+            <a href="" id="art2" class="list-group-item"></a>
+            <a href="" id="art3" class="list-group-item"></a>
+            <a href="" id="art4" class="list-group-item"></a>
+            <a href="" id="art5" class="list-group-item"></a>
+            <a href="" id="art6" class="list-group-item"></a>
+            <a href="" id="art7" class="list-group-item"></a>
+            <a href="" id="art8" class="list-group-item"></a>
           </div>
         </div>
         <label class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -107,14 +132,15 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div class="list-group">
             <a class="list-group-item list-heading text-center">Últimos Acontecimentos</a>
-            <a href="" id="acont1" class="list-group-item">Bando de alunos invade o DPD</a>
-            <a href="" id="acont2" class="list-group-item">Aluno tenta colocar 200 USBs em um computador</a>
-            <a href="" id="acont3" class="list-group-item">Professores brigam por bolacha(ou biscoito)</a>
-            <a href="" id="acont4" class="list-group-item">Alunos esquecem de como programar em Delphi</a>
-            <a href="" id="acont5" class="list-group-item">O número de DPs no curso 28 só aumenta</a>
-            <a href="" id="acont6" class="list-group-item">Sala inteira se une para programar o pTrem</a>
-            <a href="" id="acont7" class="list-group-item">Professor bate em aluno por falar que era mais maligno</a>
-            <a href="" id="acont8" class="list-group-item">Atentados terroristas no LAPA</a>
+            <script type="text/javascript">tendencias("ACONTECIMENTO");</script> <!-- Pegando as últimas tendências -->
+            <a href="" id="acont1" class="list-group-item"></a>
+            <a href="" id="acont2" class="list-group-item"></a>
+            <a href="" id="acont3" class="list-group-item"></a>
+            <a href="" id="acont4" class="list-group-item"></a>
+            <a href="" id="acont5" class="list-group-item"></a>
+            <a href="" id="acont6" class="list-group-item"></a>
+            <a href="" id="acont7" class="list-group-item"></a>
+            <a href="" id="acont8" class="list-group-item"></a>
           </div>
         </div>
         <label class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -129,14 +155,15 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div class="list-group">
             <a class="list-group-item list-heading text-center">Últimas Biografias</a>
-            <a href="" id="bio1" class="list-group-item">Francisco da Fonseca(chico)</a>
-            <a href="" id="bio2" class="list-group-item">Mácia(marcia)</a>
-            <a href="" id="bio3" class="list-group-item">Sérgio(sergio)</a>
-            <a href="" id="bio4" class="list-group-item">Patrícia(pat)</a>
-            <a href="" id="bio5" class="list-group-item">André(maligno)</a>
-            <a href="" id="bio6" class="list-group-item">Luciana(lu)</a>
-            <a href="" id="bio7" class="list-group-item">Tiago Dall'Oca(dalóca)</a>
-            <a href="" id="bio8" class="list-group-item">Daniel Campioni(Campioni Man)</a>
+            <script type="text/javascript">tendencias("BIOGRAFIA");</script> <!-- Pegando as últimas tendências -->
+            <a href="" id="bio1" class="list-group-item"></a>
+            <a href="" id="bio2" class="list-group-item"></a>
+            <a href="" id="bio3" class="list-group-item"></a>
+            <a href="" id="bio4" class="list-group-item"></a>
+            <a href="" id="bio5" class="list-group-item"></a>
+            <a href="" id="bio6" class="list-group-item"></a>
+            <a href="" id="bio7" class="list-group-item"></a>
+            <a href="" id="bio8" class="list-group-item"></a>
           </div>
         </div>
         <label class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">

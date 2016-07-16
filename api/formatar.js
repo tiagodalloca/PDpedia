@@ -1,6 +1,4 @@
-var URL_SITE_PARA_FALAR_DE_ALGO_ESPECIFICO_ARTIGO = "index.php?tipo=ARTIGO&id=";//(???)
-var URL_SITE_PARA_FALAR_DE_ALGO_ESPECIFICO_ACONT = "index.php?tipo=ACONTECIMENTO&id=";//(???)
-var URL_SITE_PARA_FALAR_DE_ALGO_ESPECIFICO_BIO = "index.php?tipo=BIOGRAFIA&id=";//(???)("c" seria o ID)
+var URLs = {artigo:"index.php?tipo=ARTIGO&id=", acont:"index.php?tipo=ACONTECIMENTO&id=", bio:"index.php?tipo=BIOGRAFIA&id="}; //("id" seria o ID)("tipo" seria a tabela)
 
 if (typeof apiClient === 'undefined')
   console.log("Carregue a apiClient.js");
@@ -12,19 +10,17 @@ function tendencias(tipo) {
     case "ARTIGO":
       // pegar todos os artigos
       apiClient("Artigo", {}, "GET", null,
-        function (artigosNFormatados) {
-          // formatar os artigos
-          var str = JSON.stringify(artigosNFormatados);
-          var obj = JSON.parse(str);
+        function (obj) {
+          //exibindo
           try{
             for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
             {
               mudarConteudoDe("art"+i, obj[obj.length-i].Titulo);
-              mudarHREF("art"+i, URL_SITE_PARA_FALAR_DE_ALGO_ESPECIFICO_ARTIGO+obj[obj.length-i].ID);
+              mudarHREF("art"+i, URLs.artigo+obj[obj.length-i].ID);
             }
           }
           catch (e)
-          {} // caso não tenho o suficiente
+          {console.log(e.toString());} // tabela sem itens
         });
 
       break;
@@ -32,38 +28,34 @@ function tendencias(tipo) {
     case "BIOGRAFIA":
       // pegar todos as biografias
       apiClient("Biografia", {}, "GET", null,
-        function (biografiasNFormatadas) {
-          // formatar os biografias
-          var str = JSON.stringify(biografiasNFormatadas);
-          var obj = JSON.parse(str);
+        function (obj) {
+          //exibindo
           try{
             for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
             {
               mudarConteudoDe("bio"+i, obj[obj.length-i].Titulo);
-              mudarHREF("bio"+i, URL_SITE_PARA_FALAR_DE_ALGO_ESPECIFICO_ACONT+obj[obj.length-i].ID);
+              mudarHREF("bio"+i, URLs.bio+obj[obj.length-i].ID);
             }
           }
           catch (e)
-          {} // caso não tenho o suficiente
+          {} // tabela sem itens
         });
       break;
 
     case "ACONTECIMENTO":
       // pegar todos os acontecimentos
       apiClient("Acontecimento", {}, "GET", null,
-        function (acontecimentosNFormatados) {
-          // formatar os acontecimentos
-          var str = JSON.stringify(artigosNFormatados);
-          var obj = JSON.parse(str);
+        function (obj) {
+          //exibindo
           try{
             for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
             {
               mudarConteudoDe("acont"+i, obj[obj.length-i].Titulo);
-              mudarHREF("acont"+i, URL_SITE_PARA_FALAR_DE_ALGO_ESPECIFICO_ACONT+obj[obj.length-i].ID);
+              mudarHREF("acont"+i, URLs.acont+obj[obj.length-i].ID);
             }
           }
           catch (e)
-          {} // caso não tenho o suficiente
+          {} // tabela sem itens
         });
       break;
   }
@@ -87,11 +79,13 @@ function especifico(tipo, id) {
     case "ARTIGO":
       // pegar artigo com ID = id
       apiClient("Artigo", {ID:id}, "GET", null,
-        function (artigosNFormatados, t2, t3) {
+        function (obj) {
           // formatar os artigo
-          var str = JSON.stringify(artigosNFormatados);
-          var obj = JSON.parse(str);
-          alert(obj.length);
+          try{
+            // o que fazer com apenas 1 artigo?
+          }
+          catch (e)
+          {} // tabela sem itens
         });
 
       break;
@@ -99,18 +93,26 @@ function especifico(tipo, id) {
     case "BIOGRAFIA":
       // pegar biografia com ID = id
       apiClient("Biografia", {ID:id}, "GET", null,
-        function (biografiasNFormatadas) {
+        function (obj) {
           // formatar os biografia
-          // altos codes...
+          try{
+            // o que fazer com apenas 1 biografia?
+          }
+          catch (e)
+          {} // tabela sem itens
         });
       break;
 
     case "ACONTECIMENTO":
       // pegar acontecimento com ID = id
       apiClient("Acontecimento", {ID:id}, "GET", null,
-        function (acontecimentosNFormatados) {
+        function (obj) {
           // formatar os acontecimento
-          // altos codes...
+          try{
+            // o que fazer com apenas 1 acontecimento?
+          }
+          catch (e)
+          {} // tabela sem itens
         });
       break;
   }
