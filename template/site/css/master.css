@@ -99,28 +99,28 @@ body {
   ### ACONTECIMENTOS
 */
 
-#acont {
+#acontecimentos {
   background-color: #feffee;
 }
-#acont #acont-wrapper {
+#acontecimentos #acontecimentos-wrapper {
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 100px;
   padding-right: 100px;
   font-size: 18px;
 }
-#acont-wrapper .list-group {
+#acontecimentos-wrapper .list-group {
   min-height: 80%;
   border-color: #0a2979;
 }
-#acont-wrapper .list-group .list-heading {
+#acontecimentos-wrapper .list-group .list-heading {
   font-size: 23px;
   font-weight: bold;
   background-color: #0a2979;
   color: white;
 }
 
-#acont-wrapper label{
+#acontecimentos-wrapper label{
   margin-bottom: 6  0px;
   margin-top: 30px;
   font-size: 23px;
@@ -130,29 +130,70 @@ body {
   ### BIOGRAFIA
 */
 
-#biografia {
-  background-color: #feffee;
+#biografias {
+  background-color: #ffefee;
 }
-#biografia #biografia-wrapper {
+#biografias #biografias-wrapper {
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 100px;
   padding-right: 100px;
   font-size: 18px;
 }
-#biografia-wrapper .list-group {
+#biografias-wrapper .list-group {
   min-height: 80%;
   border-color: #0a2979;
 }
-#biografia-wrapper .list-group .list-heading {
+#biografias-wrapper .list-group .list-heading {
   font-size: 23px;
   font-weight: bold;
   background-color: #0a2979;
   color: white;
 }
 
-#biografia-wrapper label{
+#biografias-wrapper label {
   margin-bottom: 6  0px;
   margin-top: 30px;
   font-size: 23px;
+}
+
+/*
+  ### BIOGRAFIA ESPECÍFICA
+*/
+
+#biografia {
+  background-color: #FFF;
+  height: 100%;
+}
+
+.amostraInfo {
+  background-color: #feffee;
+  border-radius: 15px;
+}
+
+.amostraTexto {
+  background-color: #feffee;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+#informacoes {
+  position: relative;
+  top : 30px;
+  left :0%;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th {
+  border: none;
+}
+
+.table-borderless thead tr td {
+  border-bottom: 1px solid #000;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
