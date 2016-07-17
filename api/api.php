@@ -228,6 +228,7 @@
 
   $pass = 'bestSenha123'; // pode colocar qualquer coisa...
   $method = 'aes128'; // deixa isso mesmo
+  
   function cript($string)
   {
       // retorna uma string contendo a $string criptografada
@@ -239,6 +240,7 @@
       // retorna uma string contendo a $string descriptografada
       return openssl_decrypt($string, $method, $pass);
   }
+
 
   function is_ajax() {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
