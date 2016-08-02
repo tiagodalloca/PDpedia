@@ -8,7 +8,8 @@
     }
     throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
   });
-  if (isset($_SERVER['PATH_INFO']) && is_ajax())
+  // if (isset($_SERVER['PATH_INFO']) && is_ajax())
+  if (isset($_SERVER['PATH_INFO']))
   {
     $db = new SQLite3("banco/banquinho.db");
     $metodo = strtolower($_SERVER['REQUEST_METHOD']);
@@ -228,7 +229,7 @@
 
   $pass = 'bestSenha123'; // pode colocar qualquer coisa...
   $method = 'aes128'; // deixa isso mesmo
-  
+
   function cript($string)
   {
       // retorna uma string contendo a $string criptografada
