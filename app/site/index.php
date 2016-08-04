@@ -6,7 +6,6 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
-  <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
   <link rel="stylesheet" href="css/master.css">
   <title>PDpedia</title>
 </head>
@@ -24,9 +23,9 @@
   </script>
 
   <?php
-  #  Se houver um $_GET["tipo"] válido e um $GET["id"] válido, tem que retirar 
-  #  tudo da tela e exibir apenas o objeto na tabela "tipo" com id "id" 
-  
+  #  Se houver um $_GET["tipo"] válido e um $GET["id"] válido, tem que retirar
+  #  tudo da tela e exibir apenas o objeto na tabela "tipo" com id "id"
+
   if (isset($_GET["tipo"]) && isset($GET["id"]))
   {
     if (trim($_GET["tipo"]) != "" && trim($GET["id"]) != "") # pode juntar os dois IFs ou pode dar bugs?
