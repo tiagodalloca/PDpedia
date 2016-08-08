@@ -216,3 +216,25 @@ body {
   border-right: none;
   border-top: none;
 }
+
+
+/*
+  ### MAIN
+*/
+
+.footer{
+  background-color: rgb(80, 80, 80);
+  height: 200px;
+}
+
+.footer h1{
+  position: relative;
+  top: 50%;
+  margin-left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  display: block;
+
+  color: white;
+  font-weight: bold;
+}
