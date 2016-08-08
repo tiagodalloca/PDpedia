@@ -55,7 +55,7 @@ body {
 */
 
 #hero {
-  background-color: #feffee;
+  background-color: rgb(238, 179, 0);
   height: 100vh;
 }
 .apresentacao {
@@ -65,97 +65,54 @@ body {
 }
 
 /*
-  ### ARTIGOS
+  ### MAIN
 */
 
-#artigos {
+#main {
   background-color: #ffefee;
 }
-#artigos #artigos-wrapper {
+#artigos-wrapper,
+#biografias-wrapper,
+#acontecimentos-wrapper {
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 100px;
   padding-right: 100px;
   font-size: 18px;
 }
-#artigos-wrapper .list-group {
-  min-height: 80%;
-  border-color: #0a2979;
-}
-#artigos-wrapper .list-group .list-heading {
-  font-size: 23px;
-  font-weight: bold;
-  background-color: #0a2979;
-  color: white;
+
+#artigos-wrapper,
+#biografias-wrapper,
+#acontecimentos-wrapper,
+.list-group .list-heading{
+  margin-bottom: 1px;
 }
 
-#artigos-wrapper label{
-  margin-bottom: 6  0px;
-  margin-top: 30px;
-  font-size: 23px;
-}
-
-/*
-  ### ACONTECIMENTOS
-*/
-
-#acontecimentos {
-  background-color: #feffee;
-}
-#acontecimentos #acontecimentos-wrapper {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 100px;
-  padding-right: 100px;
-  font-size: 18px;
-}
+#artigos-wrapper .list-group,
+#biografias-wrapper .list-group,
 #acontecimentos-wrapper .list-group {
   min-height: 80%;
   border-color: #0a2979;
 }
+#artigos-wrapper .list-group .list-heading,
+#biografias-wrapper .list-group .list-heading,
 #acontecimentos-wrapper .list-group .list-heading {
   font-size: 23px;
   font-weight: bold;
-  background-color: #0a2979;
-  color: white;
+  background-color: white;
+  color: rgb(34, 34, 34);
+  border-top: rgb(34, 34, 34) solid 3px;
+  border-bottom: rgb(34, 34, 34) solid 3px;
 }
 
+#artigos-wrapper label,
+#biografias-wrapper label,
 #acontecimentos-wrapper label{
   margin-bottom: 6  0px;
   margin-top: 30px;
   font-size: 23px;
 }
 
-/*
-  ### BIOGRAFIA
-*/
-
-#biografias {
-  background-color: #ffefee;
-}
-#biografias #biografias-wrapper {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 100px;
-  padding-right: 100px;
-  font-size: 18px;
-}
-#biografias-wrapper .list-group {
-  min-height: 80%;
-  border-color: #0a2979;
-}
-#biografias-wrapper .list-group .list-heading {
-  font-size: 23px;
-  font-weight: bold;
-  background-color: #0a2979;
-  color: white;
-}
-
-#biografias-wrapper label {
-  margin-bottom: 6  0px;
-  margin-top: 30px;
-  font-size: 23px;
-}
 
 /*
   ### BIOGRAFIA ESPECÍFICA
