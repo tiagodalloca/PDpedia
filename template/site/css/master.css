@@ -78,7 +78,13 @@ body {
 .apresentacao {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+#hero-logo{
+  height: 70vh;
+  width: 70vh;
 }
 
 #hero h1, #hero h3{
@@ -92,13 +98,15 @@ body {
 
 #posts-wrapper {
 
+  margin-top: 100px;
+
   background-color: transparent;
   border: none;
 
-  padding-top: 50px;
+  /*padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 100px;
-  padding-right: 100px;
+  padding-right: 100px;*/
   font-size: 25px;
 }
 
