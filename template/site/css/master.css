@@ -67,6 +67,13 @@ body {
   height: 100vh;
 }
 
+#logo {
+  position: absolute;
+  top: -400px;
+  left: 50%;
+  
+}
+
 .apresentacao {
   position: absolute;
   top: 50%;
