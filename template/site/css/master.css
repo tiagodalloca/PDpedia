@@ -64,6 +64,7 @@ body {
 
 #hero {
   background-image: url("../images/hero-wallpaper.jpg");
+  background-size: cover;
   height: 100vh;
 }
 
