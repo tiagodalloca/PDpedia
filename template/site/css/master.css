@@ -63,13 +63,18 @@ body {
 */
 
 #hero {
-  background-color: rgb(238, 179, 0);
+  background-image: url("../images/hero-wallpaper.jpg");
   height: 100vh;
 }
+
 .apresentacao {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+
+#hero h1, #hero h3{
+  color: white;
 }
 
 /*
