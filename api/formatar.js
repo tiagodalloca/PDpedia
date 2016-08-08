@@ -3,62 +3,117 @@ var URLs = {artigo:"index.php?tipo=ARTIGO&id=", acont:"index.php?tipo=ACONTECIME
 if (typeof apiClient === 'undefined')
   console.log("Carregue a apiClient.js");
 
-// "tipo" serve para saber qual é a tabela a ser utilizada
-function tendencias(tipo) {
-  tipo = tipo.toUpperCase();
-  switch (tipo) {
-    case "ARTIGO":
-      // pegar todos os artigos
+// "versão" serve para saber qual é a tabela a ser utilizada ou a versão utilizada
+function tendencias(versao) {
+  switch (versao) // para funcionar no template, use 2, caso contrário, utilize a tabela desejada
+  {
+    case 2: {
       apiClient("Artigo", {}, "GET", null,
         function (obj) {
           //exibindo
           try{
-            for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
+            for (var i = 1; i <= obj.length-1; i+=3) // pega de trás pra frente
             {
-              mudarConteudoDe("art"+i, obj[obj.length-i].Titulo);
-              mudarHREF("art"+i, URLs.artigo+obj[obj.length-i].ID);
+              mudarConteudoDe("post"+i, obj[obj.length-i].Titulo);
+              mudarHREF("post"+i, URLs.artigo+obj[obj.length-i].ID);
             }
           }
           catch (e)
           {console.log(e.toString());} // tabela sem itens
         });
 
-      break;
-
-    case "BIOGRAFIA":
-      // pegar todos as biografias
       apiClient("Biografia", {}, "GET", null,
         function (obj) {
           //exibindo
           try{
-            for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
+            for (var i = 2; i <= obj.length-1; i+=3) // pega de trás pra frente
             {
-              mudarConteudoDe("bio"+i, obj[obj.length-i].Titulo);
-              mudarHREF("bio"+i, URLs.bio+obj[obj.length-i].ID);
+              mudarConteudoDe("post"+i, obj[obj.length-i].Titulo);
+              mudarHREF("post"+i, URLs.artigo+obj[obj.length-i].ID);
             }
           }
           catch (e)
-          {} // tabela sem itens
+          {console.log(e.toString());} // tabela sem itens
         });
-      break;
 
-    case "ACONTECIMENTO":
-      // pegar todos os acontecimentos
       apiClient("Acontecimento", {}, "GET", null,
         function (obj) {
           //exibindo
           try{
-            for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
+            for (var i = 3; i <= obj.length-1; i+=3) // pega de trás pra frente
             {
-              mudarConteudoDe("acont"+i, obj[obj.length-i].Titulo);
-              mudarHREF("acont"+i, URLs.acont+obj[obj.length-i].ID);
+              mudarConteudoDe("post"+i, obj[obj.length-i].Titulo);
+              mudarHREF("post"+i, URLs.artigo+obj[obj.length-i].ID);
             }
           }
           catch (e)
-          {} // tabela sem itens
+          {console.log(e.toString());} // tabela sem itens
         });
       break;
+    }
+
+    default:{
+      tipo = versao.toUpperCase();
+      switch (tipo) {
+        case "ARTIGO":
+          // pegar todos os artigos
+          apiClient("Artigo", {}, "GET", null,
+            function (obj) {
+              //exibindo
+              try{
+                for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
+                {
+                  mudarConteudoDe("art"+i, obj[obj.length-i].Titulo);
+                  mudarHREF("art"+i, URLs.artigo+obj[obj.length-i].ID);
+                }
+              }
+              catch (e)
+              {console.log(e.toString());} // tabela sem itens
+            });
+
+          break;
+
+        case "BIOGRAFIA":
+          // pegar todos as biografias
+          apiClient("Biografia", {}, "GET", null,
+            function (obj) {
+              //exibindo
+              try{
+                for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
+                {
+                  mudarConteudoDe("bio"+i, obj[obj.length-i].Titulo);
+                  mudarHREF("bio"+i, URLs.bio+obj[obj.length-i].ID);
+                }
+              }
+              catch (e)
+              {} // tabela sem itens
+            });
+          break;
+
+        case "ACONTECIMENTO":
+          // pegar todos os acontecimentos
+          apiClient("Acontecimento", {}, "GET", null,
+            function (obj) {
+              //exibindo
+              try{
+                for (var i = 1; i <= obj.length-1; i++) // pega de trás pra frente
+                {
+                  mudarConteudoDe("acont"+i, obj[obj.length-i].Titulo);
+                  mudarHREF("acont"+i, URLs.acont+obj[obj.length-i].ID);
+                }
+              }
+              catch (e)
+              {} // tabela sem itens
+            });
+          break;
+      }
+      break;
+    }
   }
+
+
+
+  
 }
 
 function mudarConteudoDe(p, valor)
