@@ -191,7 +191,7 @@ body {
   border-radius: 15px;
 }
 
-#informacoes {
+#informacoesBio {
   position: relative;
   top : 30px;
   left :0%;
@@ -228,4 +228,36 @@ body {
 
   color: white;
   font-weight: bold;
+}
+
+/*
+  ### ACONTECIMENTO ESPECÍFICO
+*/
+
+#acontecimento {
+  background-color: #FFF;
+  height: 100%;
+}
+
+#amostraInfoAcont {
+  position: absolute;
+  top: 30px;
+}
+
+#tituloAcont {
+  position: absolute;
+  border: 5px solid black;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+#imagemAcont {
+  position: absolute;
+  top : 0px;
+  left: 0px;
+  width: 100%;
 }
