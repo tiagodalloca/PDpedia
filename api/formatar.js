@@ -12,7 +12,7 @@ function tendencias(versao) {
         function (obj) {
           //exibindo
           try{
-            for (var i = 1; i <= obj.length-1; i+=3) // pega de trás pra frente
+            for (var i = 1; i <= obj.length-1 && i < 16; i+=3) // pega de trás pra frente
             {
               mudarConteudoDe("post"+i, obj[obj.length-i].Titulo);
               mudarHREF("post"+i, URLs.artigo+obj[obj.length-i].ID);
@@ -26,7 +26,7 @@ function tendencias(versao) {
         function (obj) {
           //exibindo
           try{
-            for (var i = 2; i <= obj.length-1; i+=3) // pega de trás pra frente
+            for (var i = 2; i <= obj.length-1 && i < 16; i+=3) // pega de trás pra frente
             {
               mudarConteudoDe("post"+i, obj[obj.length-i].Titulo);
               mudarHREF("post"+i, URLs.artigo+obj[obj.length-i].ID);
@@ -40,7 +40,7 @@ function tendencias(versao) {
         function (obj) {
           //exibindo
           try{
-            for (var i = 3; i <= obj.length-1; i+=3) // pega de trás pra frente
+            for (var i = 3; i <= obj.length-1 && i < 16; i+=3) // pega de trás pra frente
             {
               mudarConteudoDe("post"+i, obj[obj.length-i].Titulo);
               mudarHREF("post"+i, URLs.artigo+obj[obj.length-i].ID);
