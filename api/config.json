@@ -1,0 +1,28 @@
+{
+  "Usuario": { "GET": { "return": [ "ID", "Nome", "Suspenso" ] } },
+  "Artigo": {
+    "GET": {
+      "return": [ "ID", "Texto", "Titulo", "fk_IDUsuario", "Data" ]
+    }
+  },
+  "Acontecimento": {
+    "GET": {
+      "return": [
+        "ID",
+        "Texto",
+        "Titulo",
+        "fk_IDUsuario",
+        "Data",
+        "DataCriacao"
+      ]
+    }
+  },
+  "Biografia": {
+    "GET": {
+      "return": [ "ID", "Texto", "Nome", "fk_IDUsuario", "Data" ]
+    }
+  },
+  "Edicao_Artigo": { "GET": { "return": [ "ID", "fk_ID", "Data" ] } },
+  "Edicao_Acontecimento": { "GET": { "return": [ "ID", "fk_ID", "Data" ] } },
+  "Edicao_Biografia": { "GET": { "return": [ "ID", "fk_ID", "Data" ] } }
+}
