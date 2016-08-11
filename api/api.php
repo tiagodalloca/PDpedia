@@ -1,7 +1,6 @@
 <?php
 
   ini_set('display_errors', 1);
-
   header('Content-Type: application/json; charset=utf-8');
   // Transforma Warnings do SQLite em Exceptions to PHP
   set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
@@ -11,36 +10,66 @@
     }
     throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
   });
-  // if (isset($_SERVER['PATH_INFO']) && is_ajax())
-  if (isset($_SERVER['PATH_INFO']))
+
+  $config_file = fopen("config.json", "r");
+  $config = json_decode(fread($config_file, filesize("config.json")), true);
+
+  $infos = getURLArgs();
+  $ret = lidarComRequest(
+    $infos["metodo"],
+    $infos["tabela"],
+    $infos["args"],
+    $infos["token"],
+    $infos["db"],
+    $config
+  );
+  echo json_encode($ret, JSON_UNESCAPED_UNICODE);
+
+  function getURLArgs()
   {
-    $db = new SQLite3("banco/banquinho.db");
-    $metodo = strtolower($_SERVER['REQUEST_METHOD']);
-    $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
-    $token = null;
-    $tabela = $request[0];
-    $args = null;
-    if(sizeof($request) > 1)
-      $args = json_decode($request[1], true);
-    if(sizeof($request) > 2)
-      $token = $request[2];
-    $ret = lidarComRequest($metodo, $tabela, $args, $token, $db);
-    echo json_encode($ret, JSON_UNESCAPED_UNICODE);
+    // if (isset($_SERVER['PATH_INFO']) && is_ajax())
+    if (isset($_SERVER['PATH_INFO']))
+    {
+      $db = new SQLite3("banco/banquinho.db");
+      $metodo = strtolower($_SERVER['REQUEST_METHOD']);
+      $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+      $token = null;
+      $tabela = $request[0];
+      $args = null;
+      if(sizeof($request) > 1)
+        $args = json_decode($request[1], true);
+      if(sizeof($request) > 2)
+        $token = $request[2];
+
+      return array(
+        "metodo"  => $metodo,
+        "tabela"  => $tabela,
+        "args"    => $args,
+        "token"   => $token,
+        "db"      => $db
+      );
+    }
   }
-  function lidarComRequest($metodo, $tabela, $args, $token, $db){
+
+  function lidarComRequest($metodo, $tabela, $args, $token, $db, $config){
     if ($tabela == "")
       return array();
+
     $HORAS_DE_VALIDADE_TOKEN = 4;
+
+    $oQVoltouDoBD = array();
     $ret = array();
-    $hue = prepararQuery($token, $metodo, $tabela, $args, $db);
+
+    $hue = executarQuery($token, $metodo, $tabela, $args, $db, $config);
     $comandos = $hue["comandos"];
     $comandosParaRealizarFetchArray = $hue["comandosParaRealizarFetchArray"];
+
     foreach ($comandos as $key => $value) {
       try {
         $coisa = $value->execute();
         if (in_array($key, $comandosParaRealizarFetchArray))
           while ($arr = $coisa->fetchArray(SQLITE3_ASSOC)) {
-            $ret[] = $arr;
+            $oQVoltouDoBD[] = $arr;
           }
       }
       catch(ErrorException $e){
@@ -48,31 +77,22 @@
         break;
       }
     }
-    switch ($tabela) {
-      case 'Usuario':
-        if ($metodo == 'get')
-          foreach ($ret as $key => $arr) {
-            unset($arr["Senha"]);
-            $ret[$key] = $arr;
-          }
-        else if (sizeof($ret) > 0){
-          $ret = $ret[0];
-          unset($ret["Senha"]);
-        }
-        break;
-      case 'Token':
-      if ($metodo == 'get')
-        foreach ($ret as $key => $arr) {
-          unset($arr["Valor"]);
-          $ret[$key] = $arr;
-        }
-      else if (sizeof($ret) > 0)
-        $ret = $ret[0];
-      break;
+
+    foreach ($oQVoltouDoBD as $key => $value) {
+      $obj = array();
+      foreach ($config[$tabela][strtoupper($metodo)]["return"] as $key2 => $value2) {
+        $obj[$value2] = $value[$value2];
+      }
+      $ret[] = $obj;
     }
-    return $ret;
+
+    if ("$metodo" == "get")
+      return $ret;
+
+    else
+      return $ret[0];
   }
-  function prepararQuery($token, $metodo, $tabela, $args, $db)
+  function executarQuery($token, $metodo, $tabela, $args, $db, $config)
   {
     // Não é necessário token para um método get
     if ($metodo == 'get')
@@ -136,6 +156,7 @@
     }
     return array("comandos" => array(), "comandosParaRealizarFetchArray" => array());
   }
+
   function queryGenerica($metodo, $tabela, $first_key, $args, $db)
   {
     if ($args && $first_key == null){
