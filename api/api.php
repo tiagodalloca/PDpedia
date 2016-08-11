@@ -35,7 +35,7 @@
       $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
       $token = null;
       $tabela = $request[0];
-      $args = null;
+      $args = array();
       if(sizeof($request) > 1)
         $args = json_decode($request[1], true);
       if(sizeof($request) > 2)
@@ -52,17 +52,28 @@
   }
 
   function lidarComRequest($metodo, $tabela, $args, $token, $db, $config){
-    if ($tabela == "")
-      return array();
+    $uMetodo = strtoupper($metodo);
+
+    if (! array_key_exists($tabela, $config))
+      return null;
+    else if (! array_key_exists($uMetodo, $config[$tabela]))
+      return null;
 
     $HORAS_DE_VALIDADE_TOKEN = 4;
 
-    $oQVoltouDoBD = array();
-    $ret = array();
+    $realArgs = array();
+      foreach ($args as $arg => $value) {
+        if (in_array($config[$tabela][$uMetodo]["args"], $arg))
+          $realArgs[$arg] = $args[$arg];
+      }
 
-    $hue = executarQuery($token, $metodo, $tabela, $args, $db, $config);
+    $hue = executarQuery($token, $metodo, $tabela, $realArgs, $db, $config);
+
     $comandos = $hue["comandos"];
     $comandosParaRealizarFetchArray = $hue["comandosParaRealizarFetchArray"];
+
+    $oQVoltouDoBD = array();
+    $ret = array();
 
     foreach ($comandos as $key => $value) {
       try {
@@ -80,7 +91,7 @@
 
     foreach ($oQVoltouDoBD as $key => $value) {
       $obj = array();
-      foreach ($config[$tabela][strtoupper($metodo)]["return"] as $key2 => $value2) {
+      foreach ($config[$tabela][$uMetodo]["return"] as $key2 => $value2) {
         $obj[$value2] = $value[$value2];
       }
       $ret[] = $obj;
@@ -103,7 +114,6 @@
         if ($metodo == "post"){
           $tokenValido = validarToken($token, $db);
           if ($tokenValido){
-            unset($args["ID"]);
             return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
           }
         }
@@ -116,8 +126,6 @@
           $tokenValido = validarToken($token, $db);
           if ($tokenValido)
           {
-            unset($args["ID"]);
-            unset($args["fk_IDUsuario"]);
             return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
           }
         }
@@ -126,7 +134,6 @@
           $tokenValido = validarToken($token, $db);
           if ($tokenValido)
           {
-            unset($args["ID"]);
             $args["fk_IDUsuario"] = $tokenValido["fk_IDUsuario"];
             $args["Data"] = date('Y-m-d H:i:s');
             return queryGenerica($metodo, $tabela, null, $args, $db);

@@ -2,6 +2,12 @@
   "Token": {
     "GET": {
       "token": false,
+      "args": [
+        "Chave",
+        "DataCriacao",
+        "HorasDeValidade",
+        "fk_IDUsuario"
+      ],
       "return": [ "DataCriacao", "HorasDeValidade", "fk_IDUsuario" ]
     },
     "PUT": {
@@ -28,6 +34,7 @@
   "Usuario": {
     "GET": {
       "token": false,
+      "args": [ "ID", "Nome", "Suspenso" ],
       "return": [ "ID", "Nome", "Suspenso" ]
     },
     "POST": {
@@ -39,6 +46,7 @@
   "Artigo": {
     "GET": {
       "token": false,
+      "args": [ "ID", "Texto", "Titulo", "fk_IDUsuario", "Data" ],
       "return": [ "ID", "Texto", "Titulo", "fk_IDUsuario", "Data" ]
     },
     "PUT": {
@@ -55,6 +63,14 @@
   "Acontecimento": {
     "GET": {
       "token": false,
+      "args": [
+        "ID",
+        "Texto",
+        "Titulo",
+        "fk_IDUsuario",
+        "Data",
+        "DataCriacao"
+      ],
       "return": [
         "ID",
         "Texto",
@@ -92,6 +108,7 @@
   "Biografia": {
     "GET": {
       "token": false,
+      "args": [ "ID", "Texto", "Nome", "fk_IDUsuario", "Data" ],
       "return": [ "ID", "Texto", "Nome", "fk_IDUsuario", "Data" ]
     },
     "PUT": {
@@ -108,18 +125,21 @@
   "Edicao_Artigo": {
     "GET": {
       "token": false,
+      "args": [ "ID", "fk_ID", "Data" ],
       "return": [ "ID", "fk_ID", "Data" ]
     }
   },
   "Edicao_Acontecimento": {
     "GET": {
       "token": false,
+      "args": [ "ID", "fk_ID", "Data" ],
       "return": [ "ID", "fk_ID", "Data" ]
     }
   },
   "Edicao_Biografia": {
     "GET": {
       "token": false,
+      "args": [ "ID", "fk_ID", "Data" ],
       "return": [ "ID", "fk_ID", "Data" ]
     }
   }
