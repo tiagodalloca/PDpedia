@@ -31,7 +31,7 @@
     if (isset($_SERVER['PATH_INFO']))
     {
       $db = new SQLite3("banco/banquinho.db");
-      $metodo = strtolower($_SERVER['REQUEST_METHOD']);
+      $metodo = strtoupper($_SERVER['REQUEST_METHOD']);
       $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
       $token = null;
       $tabela = $request[0];
@@ -52,18 +52,19 @@
   }
 
   function lidarComRequest($metodo, $tabela, $args, $token, $db, $config){
-    $uMetodo = strtoupper($metodo);
-
+    // A tabela existe? (ver config.json)
     if (! array_key_exists($tabela, $config))
       return null;
-    else if (! array_key_exists($uMetodo, $config[$tabela]))
+    // O método para aquela tabela é valido?
+    else if (! array_key_exists($metodo, $config[$tabela]))
       return null;
 
     $HORAS_DE_VALIDADE_TOKEN = 4;
 
     $realArgs = array();
       foreach ($args as $arg => $value) {
-        if (in_array($config[$tabela][$uMetodo]["args"], $arg))
+        // Argumento existe em config?
+        if (in_array($arg, $config[$tabela][$metodo]["args"]))
           $realArgs[$arg] = $args[$arg];
       }
 
@@ -91,13 +92,13 @@
 
     foreach ($oQVoltouDoBD as $key => $value) {
       $obj = array();
-      foreach ($config[$tabela][$uMetodo]["return"] as $key2 => $value2) {
+      foreach ($config[$tabela][$metodo]["return"] as $key2 => $value2) {
         $obj[$value2] = $value[$value2];
       }
       $ret[] = $obj;
     }
 
-    if ("$metodo" == "get")
+    if ("$metodo" == "GET")
       return $ret;
 
     else
@@ -105,63 +106,50 @@
   }
   function executarQuery($token, $metodo, $tabela, $args, $db, $config)
   {
-    // Não é necessário token para um método get
-    if ($metodo == 'get')
-      return queryGenerica($metodo, $tabela, null, $args, $db);
-    else
-    {
-      if ($tabela == 'Usuario'){
-        if ($metodo == "post"){
-          $tokenValido = validarToken($token, $db);
-          if ($tokenValido){
-            return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
-          }
+    $tokenValido = false;
+
+    // É necessário um token?
+    if ($config[$tabela][$metodo]["token"]){
+
+      $tokenValido = validarToken($token, $db);
+
+      if ($tokenValido)
+      {
+        // Caso especial
+        if (($tabela == "Artigo" ||
+            $tabela == "Acontecimento" ||
+            $tabela == "Biografia")
+            && $metodo == "PUT")
+        {
+          $args["fk_IDUsuario"] = $tokenValido["fk_IDUsuario"];
+          $args["Data"] = date('Y-m-d H:i:s');
+          return queryGenerica($metodo, $tabela, null, $args, $db);
         }
+
+        else
+          return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
       }
-      else if ( $tabela == 'Artigo' ||
-                $tabela == 'Acontecimento' ||
-                $tabela == 'Biografia'){
-        if ($metodo == "post")
-        {
-          $tokenValido = validarToken($token, $db);
-          if ($tokenValido)
-          {
-            return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
-          }
-        }
-        else if ($metodo == "put")
-        {
-          $tokenValido = validarToken($token, $db);
-          if ($tokenValido)
-          {
-            $args["fk_IDUsuario"] = $tokenValido["fk_IDUsuario"];
-            $args["Data"] = date('Y-m-d H:i:s');
-            return queryGenerica($metodo, $tabela, null, $args, $db);
-          }
-        }
-      }
-      else if ($tabela == 'Token'){
-        if ($metodo == "put")
-        {
+
+      // Se não for caso especial, realiza uma query genérica
+      else
+        return array("comandos" => array(), "comandosParaRealizarFetchArray" => array());
+    }
+
+    else {
+      // Token/PUT é um caso especial
+      if ($tabela == 'Token' && $metodo == "PUT"){
           $args["fk_IDUsuario"] = $args["IDUsuario"];
-          unset($args["IDUsuario"]);
-          unset($args["Senha"]);
           $args["DataCriacao"] = date('Y-m-d H:i:s');
           $args["HorasDeValidade"] = 4;
           $args["Chave"] = md5(uniqid(rand(), true));
           return queryGenerica($metodo, $tabela, null, $args, $db);
         }
-        else if ($metodo == "delete")
-        {
-          unset($args["DataCriacao"]);
-          unset($args["HorasDeValidade"]);
-          unset($args["fk_IDUsuario"]);
-          if ($args["Chave"])
-            return queryGenerica($metodo, $tabela, null, $args, $db);
-        }
-      }
+
+      // Se não for caso especial, realiza uma query genérica
+      else
+        return queryGenerica($metodo, $tabela, null, $args, $db);
     }
-    return array("comandos" => array(), "comandosParaRealizarFetchArray" => array());
+
   }
 
   function queryGenerica($metodo, $tabela, $first_key, $args, $db)
@@ -175,7 +163,7 @@
     $comandos = array();
     $comandosParaRealizarFetchArray = array();
     switch ($metodo) {
-      case 'get':
+      case 'GET':
         if ($first_key){
           $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
           $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
@@ -184,7 +172,7 @@
           $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
           $comandosParaRealizarFetchArray[] = 0;
         break;
-      case 'post':
+      case 'POST':
         $cont = 0;
         foreach ($args as $key => $value) {
           if ($key == $first_key){
@@ -201,7 +189,7 @@
         $comandos[$cont]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         $comandosParaRealizarFetchArray[] = $cont;
         break;
-      case 'put':
+      case 'PUT':
         $colunas = "(";
         $valores = "(";
         foreach ($args as $key => $value) {
@@ -220,7 +208,7 @@
         $comandos[1]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         $comandosParaRealizarFetchArray[] = 1;
         break;
-      case 'delete':
+      case 'DELETE':
         $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         $comandosParaRealizarFetchArray[] = 0;
