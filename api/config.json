@@ -43,6 +43,18 @@
       "return": [ "ID", "Nome", "Suspenso" ]
     }
   },
+  "Requisicao": {
+    "GET": {
+      "token": false,
+      "args": [ "ID", "Nome", "Data" ],
+      "return": [ "ID", "Nome", "Data" ]
+    },
+    "PUT": {
+      "token": false,
+      "args": [ "ID", "Nome", "Senha", "Data" ],
+      "return": [ "ID", "Nome", "Data" ]
+    }
+  },
   "Artigo": {
     "GET": {
       "token": false,
