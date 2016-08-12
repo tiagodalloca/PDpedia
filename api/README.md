@@ -18,6 +18,7 @@ Se atente ao **método** da requisição.
 | Tabela | Campos retornados | Detalhes | Requer _token_ |
 | --- | --- | --- | --- |
 | Usuario | ID, Nome, Suspenso | `Senha` não é retornado | ✗ |
+| Requisicao | ID, Nome, Data | `Senha` não é retornado | ✗ |
 | Artigo | ID, Texto, Titulo, fk_IDUsuario, Data | - | ✗ |
 | Acontecimento | ID, Texto, Titulo, fk_IDUsuario, DataAcontecimento, Data | - | ✗ |
 | Biografia | ID, Texto, Nome, fk_IDUsuario, Data | - | ✗ |
@@ -28,6 +29,7 @@ Se atente ao **método** da requisição.
 
 | Tabela | Campos fornecidos | Campos retornados | Detalhes | Requer _token_ |
 | --- | --- | --- | --- | --- |
+| Requisicao | ID, Nome, Data, Senha | ID, Nome, Data | `Senha` não é retornado | ✗ |
 | Artigo | Texto, Titulo | ID, Texto, Titulo, fk_IDUsuario, Data | `fk_IDUsuario` é preenchido através do token fornecido e `Data` é do sistema | ✓ |
 | Acontecimento | Texto, Titulo, DataAcontecimento | ID, Texto, Titulo, fk_IDUsuario, DataAcontecimento, Data | `fk_IDUsuario` é preenchido através do token fornecido e `Data` é do sistema | ✓ |
 | Biografia | Texto, Nome | ID, Texto, Nome, fk_IDUsuario, Data | `fk_IDUsuario` é preenchido através do token fornecido e `Data` é do sistema | ✓ |
@@ -73,6 +75,8 @@ URL genérica: <br>
 
 **Exemplo:**
 
+Método `POST`
+
 `...api.php/Usuario/{"Nome":"Fernando", "Senha":"cocosinho"}/asdglkj2345lkjhscw35340324985`
 ```SQL
 UPDATE `Usuario` SET `Nome`= "Fernando" WHERE `ID`= 15194
@@ -98,6 +102,14 @@ Essa é uma lista com todas as tabelas:
 | Nome | TEXT NOT NULL |
 | Senha |	TEXT NOT NULL |
 | Suspenso | INTEGER NOT NULL DEFAULT 0 |
+
+#### Requisicao
+
+| Campo | Detalhes |
+| --- | --- |
+| **ID** | TEXT NOT NULL UNIQUE |
+| Nome | TEXT NOT NULL |
+| Senha |	TEXT NOT NULL |
 
 #### Artigo
 
