@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
   <link rel="shortcut icon" href="images/PDpedia2.png">
-  <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
   <link rel="stylesheet" href="css/master.css">
   <title>PDpedia - Biografia de chico</title>
 </head>
@@ -15,6 +14,7 @@
 <body>
   <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+  <script src="js/index.js" type="text/javascript"></script>
 
   
   <script type="text/javascript">
@@ -23,38 +23,28 @@
     });
 
     /* Elementos do mesmo tamanho */
-    document.body.onload = function()
-    {
-      if($(".apresentacaoAcont2").height() > $(".apresentacaoAcont3").height())
-        $(".apresentacaoAcont3").height($(".apresentacaoAcont2").height());
-      else
-        $(".apresentacaoAcont2").height($(".apresentacaoAcont3").height());
+    window.onload = function() { 
+      iniciar("Acontecimento");
+      exec("ajustarDivs");
     };
-    document.body.onresize = function()
-    {
-      if($(".apresentacaoAcont2").height() > $(".apresentacaoAcont3").height())
-        $(".apresentacaoAcont3").height($(".apresentacaoAcont2").height());
-      else
-        $(".apresentacaoAcont2").height($(".apresentacaoAcont3").height());
+
+    window.onresize = function() {
+      exec("ajustarDivs");
     };
 
   </script>
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <!--  Esse é um daqueles botões de "hambúrger"-->
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <a class="navbar-brand" href="#">PDpedia</a> -->
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.html#hero">Home</a></li>
@@ -87,27 +77,32 @@
 
   <div id="content">
     <div class="apresentacaoImagemAcont container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="row" style="border-bottom: 5px solid red;">
-        <img src="images/trem.png" id="imagemAcont"></img>
+      <div class="row">
+        <img src="images/hero-wallpaper.jpg" id="imagemAcont"></img>
       </div>
-    </div>
-
-    <div class="apresentacaoAcont container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="row">
         <div class="apresentacaoAcont3 container-fluid col-xs-2 col-sm-2 col-md-2 col-lg-2">
+          <br>
+          <center>
+            <button class="glyphicon glyphicon-pencil" title="Editar"></button>
+            <button class="glyphicon glyphicon-flag" title="Denunciar"></button>
+            <button class="glyphicon glyphicon-download" title="Download"></button>
+            <button class="glyphicon glyphicon-thumbs-up" title="Like"></button>
+            <button class="glyphicon glyphicon-thumbs-down" title="Deslike"></button>
+          </center>
           <table id="informacoesBio" class="table table-reflow table-condensed table-borderless">
               <tbody>
                 <tr><th>Data:</th>
-                <td>19/19/2019 <br>(faz 4 dias)</td></tr>
+                <td>12/08/2016 <br>(faz 4 dias)</td></tr>
 
                 <tr><th>Local:</th>
                 <td>COTUCA</td></tr>
 
                 <tr><th>Responsável(is):</th>
-                <td>Pedro Merda da Silva</td></tr>
+                <td>Pedro Luiz Bundaczuk Pezoa</td></tr>
 
                 <tr><th>Participante(s):</th>
-                <td>Dalôkoso</td></tr>
+                <td>Ninguém</td></tr>
               </tbody>
             </table>
           <br><br><br><br>
@@ -117,8 +112,8 @@
         </div>
         <div class="apresentacaoAcont2 container-fluid col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <br>
-          Um dia nasceu um trem chamado Pedro e todo mundo morreu, FIM!
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <font size="6">T</font>udo estava calmo em um lindo dia de verão, quando de repente um aluno do COTUCA resolveu entrar no famoso site PDpedia e viu que havia um artigo com o título "Quantas USBs um PC suporta?", e logo após lê-lo, foi testar quantas USBs um PC suporta(utilizou gambiarras).<br>
+          Este aluno conseguiu alcançar a incrível marca de 200 USBs em um computador e agora ele tem que pagar o conserto do mesmo.
         </div>
       </div>
     </div>
@@ -126,7 +121,7 @@
 
 
   <div id="tituloAcont">
-    <h1><center>Trem nasceu</center></h1>
+    <h1><center>As 200 USBs</center></h1>
   </div>
 </body>
 
