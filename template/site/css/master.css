@@ -53,7 +53,7 @@ body {
 }
 
 #content{
-  margin-bottom: 30vh;
+  margin-bottom: 20vh;
 }
 
 /*
@@ -201,7 +201,7 @@ body {
 }
 
 .table-borderless thead tr td {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid rgba(#000000, 0.83);
   border-left: none;
   border-right: none;
   border-top: none;
@@ -214,17 +214,11 @@ body {
 
 .footer{
   background-color: rgb(80, 80, 80);
-  height: 200px;
 }
 
-.footer h1{
-  position: relative;
-  top: 50%;
-  margin-left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-
-  display: block;
-
+.footer h3{
+  padding-top: 30px;
+  padding-bottom: 30px;
   color: white;
   font-weight: bold;
 }
