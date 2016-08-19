@@ -14,7 +14,7 @@
 <body>
   <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-  
+
   <script type="text/javascript">
     $('.dropdown-menu').find('form').click(function(e) {
       e.stopPropagation();
@@ -38,10 +38,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.html#hero">Home</a></li>
-          <li><a href="index.html#artigos">Artigos</a></li>
-          <li><a href="index.html#biografias">Biografias</a></li>
-          <li><a href="index.html#acontecimentos">Acontecimentos</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#artigos">Artigos</a></li>
+          <li><a href="acontEspecifico.html">Acontecimentos</a></li>
+          <li><a href="bioEspecifico.html">Biografias</a></li>
           <li class="dropdown dropdown-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
@@ -56,6 +56,39 @@
                   <div class="form-group">
                     <label for="loginPass" class="control-label">Password</label>
                     <input type="password" class="form-control" id="loginPass" placeholder="Enter Password">
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="form-control btn-default" id="loginConf">Logar</button>
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown dropdown-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Requisitar cadastro
+            </a>
+            <ul id="div-form-cadastrar" class="dropdown-menu">
+              <li>
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label for="loginID" class="control-label">ID</label>
+                    <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
+                  </div>
+                  <div class="form-group">
+                    <label for="loginNome" class="control-label">Nome</label>
+                    <input type="text" class="form-control" id="loginNome" placeholder="Enter Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="cadastrarPass" class="control-label">Password</label>
+                    <input type="password" class="form-control" id="cadastrarPass" placeholder="Enter Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="cadastrarConfPass" class="control-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="cadastrarConfPass" placeholder="Repeat Password">
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="form-control btn-default" id="cadastrarConf">Cadastrar</button>
                   </div>
                 </form>
               </li>
@@ -123,7 +156,7 @@
       </div>
 
     </div>
-      
+
   </div>
 </body>
 

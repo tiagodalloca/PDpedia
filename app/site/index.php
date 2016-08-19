@@ -42,10 +42,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="http://www2/u15190/PDpedia/template/site/index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#artigos">Artigos</a></li>
-          <li><a href="http://www2/u15190/PDpedia/template/site/acontEspecifico.html">Acontecimentos</a></li>
-          <li><a href="http://www2/u15190/PDpedia/template/site/bioEspecifico.html">Biografias</a></li>
+          <li><a href="acontEspecifico.html">Acontecimentos</a></li>
+          <li><a href="bioEspecifico.html">Biografias</a></li>
           <li class="dropdown dropdown-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
