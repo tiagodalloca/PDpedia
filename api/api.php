@@ -145,7 +145,7 @@
         }
 
       elseif ($tabela == 'Requisicao' && $metodo == "PUT") {
-        $args["IP"] = //peaga ip;
+        $args["IP"] = $_SERVER['REMOTE_ADDR'];
       }
 
       // Realiza uma query genérica
@@ -158,8 +158,8 @@
   {
     if ($args && $first_key == null){
       reset($args);
-      // poderá ser usada para ordenação
-      // {"ID" : 2, "Nome": "João"} => first_key = "ID"
+      // poderá ser usada para ordenação por ID
+      // {"ID" : 2, "Nome": "João"} onde first_key = "ID"
       $first_key = key($args);
     }
     $comandos = array();

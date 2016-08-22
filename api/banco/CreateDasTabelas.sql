@@ -11,6 +11,7 @@ CREATE TABLE `Requisicao` (
     `Nome`    TEXT NOT NULL,
     `Senha`    TEXT NOT NULL,
     `Data`     TEXT NOT NULL,
+    `IP`     TEXT NOT NULL,
     PRIMARY KEY(ID)
 )
 
