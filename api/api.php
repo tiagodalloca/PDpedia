@@ -142,12 +142,14 @@
           $args["DataCriacao"] = date('Y-m-d H:i:s');
           $args["HorasDeValidade"] = 4;
           $args["Chave"] = md5(uniqid(rand(), true));
-          return queryGenerica($metodo, $tabela, null, $args, $db);
         }
 
-      // Se não for caso especial, realiza uma query genérica
-      else
-        return queryGenerica($metodo, $tabela, null, $args, $db);
+      elseif ($tabela == 'Requisicao' && $metodo == "PUT") {
+        $args["IP"] = //peaga ip;
+      }
+
+      // Realiza uma query genérica
+      return queryGenerica($metodo, $tabela, null, $args, $db);
     }
 
   }
