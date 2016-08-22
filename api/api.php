@@ -68,7 +68,7 @@
           $realArgs[$arg] = $args[$arg];
       }
 
-    $hue = executarQuery($token, $metodo, $tabela, $realArgs, $db, $config);
+    $hue = prepararQuery($token, $metodo, $tabela, $realArgs, $db, $config);
 
     $comandos = $hue["comandos"];
     $comandosParaRealizarFetchArray = $hue["comandosParaRealizarFetchArray"];
@@ -76,12 +76,12 @@
     $oQVoltouDoBD = array();
     $ret = array();
 
-    foreach ($comandos as $key => $value) {
+    foreach ($comandos as $posicaoComando => $comando) {
       try {
-        $coisa = $value->execute();
-        if (in_array($key, $comandosParaRealizarFetchArray))
+        $coisa = $comando->execute();
+        if (in_array($posicaoComando, $comandosParaRealizarFetchArray))
           while ($arr = $coisa->fetchArray(SQLITE3_ASSOC)) {
-            $oQVoltouDoBD[] = $arr;
+            $oQVoltouDoBD[] = $arr; // tipo push (empilhar)
           }
       }
       catch(ErrorException $e){
@@ -90,10 +90,10 @@
       }
     }
 
-    foreach ($oQVoltouDoBD as $key => $value) {
+    foreach ($oQVoltouDoBD as $key => $voltado) {
       $obj = array();
-      foreach ($config[$tabela][$metodo]["return"] as $key2 => $value2) {
-        $obj[$value2] = $value[$value2];
+      foreach ($config[$tabela][$metodo]["return"] as $key2 => $attr) {
+        $obj[$attr] = $voltado[$attr];
       }
       $ret[] = $obj;
     }
@@ -104,7 +104,7 @@
     else
       return $ret[0];
   }
-  function executarQuery($token, $metodo, $tabela, $args, $db, $config)
+  function prepararQuery($token, $metodo, $tabela, $args, $db, $config)
   {
     $tokenValido = false;
 
