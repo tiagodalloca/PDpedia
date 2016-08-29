@@ -1,0 +1,14 @@
+#menu-do-caderno{
+  font-size: 20px;
+}
+
+.caderno{
+  margin-top: 80px;
+  height: 60vh;
+  font-family: monospace;
+}
+
+#content{
+  margin-top: 100px;
+  margin-bottom: 80px;
+}

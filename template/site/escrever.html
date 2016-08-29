@@ -6,33 +6,28 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
-  <link rel="shortcut icon" href="images/PDpedia2.png">
+  <link rel="stylesheet" href="css/theme.min.css">
   <link rel="stylesheet" href="css/master.css">
-  <link rel="stylesheet" href="css/acontEspecifico.css">
-  <title>PDpedia - Biografia de chico</title>
+  <link rel="stylesheet" href="css/escrever.css">
+  <link rel="shortcut icon" href="images/PDpedia2.png">
+  <title>PDpedia</title>
 </head>
 
 <body>
   <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-  <script src="js/index.js" type="text/javascript"></script>
-
+  <script src="js/index.js" charset="utf-8"></script>
 
   <script type="text/javascript">
     $('.dropdown-menu').find('form').click(function(e) {
       e.stopPropagation();
     });
 
-    /* Elementos do mesmo tamanho */
-    window.onload = function() {
-      iniciar("Acontecimento");
-      exec("ajustarDivs");
-    };
-
-    window.onresize = function() {
-      exec("ajustarDivs");
-    };
-
+    window.onload = () =>{
+      $('#lugar-onde-escreve').val(
+        "# Título h1\n## Título h2\n### Título h3\n#### Título h4\n\n- item 1\n- item 2\n- item 3\n- item 4\n- item 5\n- item 6\n  * sub-item 1\n  * sub-item 2\n  * sub-item 3"
+      );
+    }
   </script>
 
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -87,7 +82,7 @@
                 <form class="form-horizontal">
                   <div class="form-group">
                     <label for="loginID" class="control-label">ID</label>
-                    <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
+                    <input type="text" class="form-control" id="loginID" placeholder="url...">
                   </div>
                   <div class="form-group">
                     <label for="loginNome" class="control-label">Nome</label>
@@ -115,54 +110,40 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <div id="content">
-    <div class="apresentacaoImagemAcont container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="row">
-        <img src="images/hero-wallpaper.jpg" id="imagemAcont"></img>
-      </div>
-      <div class="row">
-        <div class="apresentacaoAcont3 container-fluid col-xs-2 col-sm-2 col-md-2 col-lg-2">
+  <div id="content" class="container-fluid">
+    <center>
+      <h1>Página para edição/criação de conteúdo</h1>
+    </center>
+    <div id="menu-do-caderno" class="caderno col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active" style="text-align:center;"><a href="#">Adicionar propriedade</a></li>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label">Imagem de fundo</label>
+            <input type="text" class="form-control" placeholder="Enter ID">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Coisa interessante #1</label>
+            <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #1">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Coisa interessante #2</label>
+            <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #2">
+          </div>
           <br>
-          <center>
-            <button class="glyphicon glyphicon-pencil" title="Editar"></button>
-            <button class="glyphicon glyphicon-flag" title="Denunciar"></button>
-            <button class="glyphicon glyphicon-download" title="Download"></button>
-            <button class="glyphicon glyphicon-thumbs-up" title="Like"></button>
-            <button class="glyphicon glyphicon-thumbs-down" title="Deslike"></button>
-          </center>
-          <table id="informacoesBio" class="table table-reflow table-condensed table-borderless">
-              <tbody>
-                <tr><th>Data:</th>
-                <td>12/08/2016 <br>(faz 4 dias)</td></tr>
-
-                <tr><th>Local:</th>
-                <td>COTUCA</td></tr>
-
-                <tr><th>Responsável(is):</th>
-                <td>Pedro Luiz Bundaczuk Pezoa</td></tr>
-
-                <tr><th>Participante(s):</th>
-                <td>Ninguém</td></tr>
-              </tbody>
-            </table>
-          <br><br><br><br>
-        </div>
-        <div class="apr container-fluid col-xs-1 col-sm-1 col-md-1 col-lg-1">
-          <br>
-        </div>
-        <div class="apresentacaoAcont2 container-fluid col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <br>
-          <font size="6">T</font>udo estava calmo em um lindo dia de verão, quando de repente um aluno do COTUCA resolveu entrar no famoso site PDpedia e viu que havia um artigo com o título "Quantas USBs um PC suporta?", e logo após lê-lo, foi testar quantas USBs um PC suporta(utilizou gambiarras).<br>
-          Este aluno conseguiu alcançar a incrível marca de 200 USBs em um computador e agora ele tem que pagar o conserto do mesmo.
-        </div>
-      </div>
+          <button type="button" class="form-control btn-default" id="cadastrarConf">Submeter</button>
+        </form>
+      </ul>
     </div>
+    <textarea id="lugar-onde-escreve" class="caderno col-xs-12 col-sm-12 col-md-8 col-lg-8"></textarea>
   </div>
 
-
-  <div id="tituloAcont">
-    <h1><center>As 200 USBs</center></h1>
+  <div class="footer">
+    <center>
+      <h3>Feito com muito <3 e código </h1>
+    </center>
   </div>
+
 </body>
 
 </html>
