@@ -3,12 +3,30 @@
 }
 
 .caderno{
-  margin-top: 80px;
+  width: 100%;
+
+  min-height: 800px;
   height: 60vh;
   font-family: monospace;
+
+  overflow-y: auto;
+}
+
+#html-preview{
+  border-radius: 3px;
+  border: 1px solid rgba(69, 18, 96, 0.43);
+  padding: 20px;
 }
 
 #content{
   margin-top: 100px;
   margin-bottom: 80px;
+}
+
+.nav li{
+  cursor: pointer;
+}
+
+code{
+  font-size: 15px;
 }

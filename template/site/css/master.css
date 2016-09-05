@@ -169,11 +169,13 @@ body {
 
 .footer{
   background-color: rgb(80, 80, 80);
+  margin-bottom: 0px;
 }
 
 .footer h3{
   padding-top: 30px;
   padding-bottom: 30px;
+  margin-bottom: 0px;
   color: white;
   font-weight: bold;
 }
