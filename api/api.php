@@ -70,6 +70,9 @@
 
     $hue = prepararQuery($token, $metodo, $tabela, $realArgs, $db, $config);
 
+    if ($hue == null)
+      return $hue;
+
     $comandos = $hue["comandos"];
     $comandosParaRealizarFetchArray = $hue["comandosParaRealizarFetchArray"];
 
@@ -107,14 +110,13 @@
   function prepararQuery($token, $metodo, $tabela, $args, $db, $config)
   {
     $tokenValido = false;
-
+    $orderby = null;
     // É necessário um token?
     if ($config[$tabela][$metodo]["token"]){
 
       $tokenValido = validarToken($token, $db);
 
-      if ($tokenValido)
-      {
+      if ($tokenValido){
         // Caso especial
         if (($tabela == "Artigo" ||
             $tabela == "Acontecimento" ||
@@ -123,11 +125,11 @@
         {
           $args["fk_IDUsuario"] = $tokenValido["fk_IDUsuario"];
           $args["Data"] = date('Y-m-d H:i:s');
-          return queryGenerica($metodo, $tabela, null, $args, $db);
+          return queryGenerica($metodo, $tabela, null, $orderby, $args, $db);
         }
 
         else
-          return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $args, $db);
+          return queryGenerica($metodo, $tabela, $tokenValido["fk_IDUsuario"], $orderby, $args, $db);
       }
 
       // Se não for caso especial, realiza uma query genérica
@@ -137,12 +139,19 @@
 
     else {
       // Token/PUT é um caso especial
-      if ($tabela == 'Token' && $metodo == "PUT"){
-          $args["fk_IDUsuario"] = $args["IDUsuario"];
-          $args["DataCriacao"] = date('Y-m-d H:i:s');
-          $args["HorasDeValidade"] = 4;
-          $args["Chave"] = md5(uniqid(rand(), true));
-        }
+      if ($tabela == 'Token' && $metodo == "PUT")
+        if (putTokenValido($args, $db)){
+            $args["fk_IDUsuario"] = $args["IDUsuario"];
+            $args["DataCriacao"] = date('Y-m-d H:i:s');
+            unset($args["Senha"]);
+            unset($args["IDUsuario"]);
+            $args["HorasDeValidade"] = 4;
+            $args["Chave"] = md5(uniqid(rand(), true));
+
+            $orderby = "DataCriacao";
+          }
+        else
+          return null;
 
       elseif ($tabela == 'Requisicao' && $metodo == "PUT") {
         $args["IP"] = $_SERVER['REMOTE_ADDR'];
@@ -150,12 +159,12 @@
       }
 
       // Realiza uma query genérica
-      return queryGenerica($metodo, $tabela, null, $args, $db);
+      return queryGenerica($metodo, $tabela, null, $orderby, $args, $db);
     }
 
   }
 
-  function queryGenerica($metodo, $tabela, $first_key, $args, $db)
+  function queryGenerica($metodo, $tabela, $first_key, $orderby, $args, $db)
   {
     if ($args && $first_key == null){
       reset($args);
@@ -168,11 +177,19 @@
     switch ($metodo) {
       case 'GET':
         if ($first_key){
-          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+          if ($orderby != null)
+            $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor ORDER BY $orderby DESC");
+
+          else
+            $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
           $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         }
         else
-          $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
+          if ($orderby != null)
+            $comandos[] = $db->prepare("SELECT * FROM `$tabela ORDER BY $orderby`");
+
+          else
+            $comandos[] = $db->prepare("SELECT * FROM `$tabela`");
           $comandosParaRealizarFetchArray[] = 0;
         break;
       case 'POST':
@@ -188,7 +205,11 @@
           $comandos[$cont]->bindValue(":valor", $primeiroValor, SQLITE3_TEXT);
           $cont++;
         }
-        $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        if ($orderby != null)
+          $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor ORDER BY $orderby DESC");
+
+        else
+          $comandos[$cont] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[$cont]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         $comandosParaRealizarFetchArray[] = $cont;
         break;
@@ -207,25 +228,36 @@
           $comandos[0]->bindValue($cont, $value, SQLITE3_TEXT);
           $cont++;
         }
-        $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        if ($orderby != null)
+          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor ORDER BY $orderby DESC");
+
+        else
+          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[1]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         $comandosParaRealizarFetchArray[] = 1;
         break;
       case 'DELETE':
-        $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
+        if ($orderby != null)
+          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor ORDER BY $orderby DESC");
+
+        else
+          $comandos[] = $db->prepare("SELECT * FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[0]->bindValue(':valor', $args[$first_key], SQLITE3_TEXT);
         $comandosParaRealizarFetchArray[] = 0;
-        $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
+        if ($orderby != null)
+          $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor ORDER BY $orderby DESC");
+
+        else
+          $comandos[] = $db->prepare("DELETE FROM `$tabela` WHERE `$first_key`=:valor");
         $comandos[1]->bindValue(":valor", $args[$first_key], SQLITE3_TEXT);
         break;
     }
     return array( "comandos" => $comandos,
                   "comandosParaRealizarFetchArray" => $comandosParaRealizarFetchArray);
   }
-  function validarToken($token, $db)
-  {
-    if ($token != null)
-    {
+
+  function validarToken($token, $db){
+    if ($token != null){
       $comando = $db->prepare("SELECT * FROM Token WHERE `Chave`= :valor");
       $comando->bindValue(':valor', $token, SQLITE3_TEXT);
       try {
@@ -247,6 +279,21 @@
       }
     }
     return null;
+  }
+
+  function putTokenValido($args, $db){
+    $comando = $db->prepare("SELECT * FROM `Usuario` WHERE `ID`=:id AND `Senha`=:senha");
+    $comando->bindValue(':id', $args["IDUsuario"], SQLITE3_TEXT);
+    $comando->bindValue(':senha', $args["Senha"], SQLITE3_TEXT);
+
+    $ret = array();
+    $coisa = $comando->execute();
+    $arr = $coisa->fetchArray(SQLITE3_ASSOC);
+    if ($arr["ID"] == $args["IDUsuario"])
+      return true;
+
+    return false; // algo deu errado, não passou pelo return true
+                  // A senha deve estar errada
   }
 
   $pass = 'bestSenha123'; // pode colocar qualquer coisa...
