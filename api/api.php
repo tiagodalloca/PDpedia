@@ -146,6 +146,7 @@
 
       elseif ($tabela == 'Requisicao' && $metodo == "PUT") {
         $args["IP"] = $_SERVER['REMOTE_ADDR'];
+        $args["Data"] = date('Y-m-d H:i:s');
       }
 
       // Realiza uma query genérica

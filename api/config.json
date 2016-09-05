@@ -51,7 +51,7 @@
     },
     "PUT": {
       "token": false,
-      "args": [ "ID", "Nome", "Senha", "Data", "IP" ],
+      "args": [ "ID", "Nome", "Senha"],
       "return": [ "ID", "Nome", "Data" ]
     }
   },
