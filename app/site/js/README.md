@@ -1,1 +1,1 @@
-# All js files (that aren't libraries) are here!
+# All js files (that aren't lib) are here!

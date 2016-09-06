@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
-  <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
-  <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../../lib/bootstrap/css/normalize.css">
+  <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="css/theme.min.css">
   <link rel="stylesheet" href="css/master.css">
   <link rel="shortcut icon" href="images/PDpedia2.png">
@@ -13,8 +13,8 @@
 </head>
 
 <body>
-  <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
-  <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+  <script src="../../lib/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
+  <script src="../../lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
   <script src="js/index.js" charset="utf-8"></script>
   <script src="../../api/apiClient.js" type="text/javascript"></script>
   <script src="../../api/formatar.js" type="text/javascript"></script>
