@@ -1,32 +1,40 @@
-#menu-do-caderno{
+#menu-do-caderno {
   font-size: 20px;
 }
 
-.caderno{
+.caderno {
   width: 100%;
-
   min-height: 800px;
   height: 60vh;
+  padding: 0px;
   font-family: monospace;
-
   overflow-y: auto;
+  border-radius: 3px;
+  border: 1px solid rgb(231, 231, 231);
 }
 
-#html-preview{
-  border-radius: 3px;
-  border: 1px solid rgba(69, 18, 96, 0.43);
+textarea.caderno {
+  margin-left: 1.5px;
+}
+
+#html-preview {
   padding: 20px;
 }
 
-#content{
+#content {
   margin-top: 100px;
   margin-bottom: 80px;
 }
 
-.nav li{
+.nav li {
   cursor: pointer;
 }
 
-code{
+/*.nav li.active a{
+  color: white;
+  background-color: rgb(77, 148, 255);
+}*/
+
+code {
   font-size: 15px;
 }

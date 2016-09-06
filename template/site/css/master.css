@@ -1,6 +1,8 @@
 body {
   overflow-x: hidden;
+  padding-top: 3em;
 }
+
 
 /*
 ########
@@ -12,22 +14,42 @@ body {
   font-size: 17px;
   margin-bottom: 10px;
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #e7e7e7;
+  /*background-color: rgba(184, 184, 184, 0.42);*/
+}
+
+#pdpedia-icon {
+  top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+}
+
+.navbar .container-fluid {
+  min-height: 3em;
+}
+
 .dropdown-large {
   position: static !important;
 }
+
 .form-horizontal .form-group {
   margin-left: 10px;
   margin-right: 5px;
 }
+
 #form-login {
   z-index: 3;
-  background-color: white;
 }
+
 .dropdown-menu-large {
   margin-left: 16px;
   margin-right: 32px;
   padding: 20px 0px;
 }
+
 
 /*
 ###########
@@ -43,6 +65,7 @@ body {
 #content .pagina {
   min-height: 50vh;
 }
+
 .align-middle {
   margin-top: 50%;
   transform: translateY(-50%);
@@ -53,9 +76,10 @@ body {
   transform: translateX(-50%);
 }
 
-#content{
+#content {
   margin-bottom: 60px;
 }
+
 
 /*
   ### HERO
@@ -74,27 +98,24 @@ body {
   transform: translateY(-50%) translateX(-50%);
 }
 
-#hero-logo{
+#hero-logo {
   height: 60vh;
   width: 60vh;
 }
 
-#hero h1, #hero h3{
+#hero h1, #hero h3 {
   color: white;
 }
+
 
 /*
   ### MAIN
 */
 
-
 #posts-wrapper {
-
   margin-top: 100px;
-
   background-color: transparent;
   border: none;
-
   /*padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 100px;
@@ -102,62 +123,56 @@ body {
   font-size: 25px;
 }
 
-#posts-wrapper .list-group{
+#posts-wrapper .list-group {
   min-height: 80%;
   border-color: #0a2979;
 }
 
-#posts-wrapper .list-group .list-group-item.artigo:hover{
+#posts-wrapper .list-group .list-group-item.artigo:hover {
   background-position: 100% 100%;
   color: white;
 }
 
-#posts-wrapper .list-group .list-group-item.biografia:hover{
+#posts-wrapper .list-group .list-group-item.biografia:hover {
   background-position: 100% 100%;
   color: white;
 }
 
-#posts-wrapper .list-group .list-group-item.acontecimento:hover{
+#posts-wrapper .list-group .list-group-item.acontecimento:hover {
   background-position: 100% 100%;
   color: white;
 }
 
-#posts-wrapper .list-group .list-group-item.artigo{
-  background-image: repeating-linear-gradient(to left , rgb(159, 10, 0), rgb(159, 10, 0));
+#posts-wrapper .list-group .list-group-item.artigo {
+  background-image: repeating-linear-gradient(to left, rgb(159, 10, 0), rgb(159, 10, 0));
 }
 
-#posts-wrapper .list-group .list-group-item.biografia{
-  background-image: repeating-linear-gradient(to left , rgb(0, 135, 30), rgb(0, 135, 30));
+#posts-wrapper .list-group .list-group-item.biografia {
+  background-image: repeating-linear-gradient(to left, rgb(0, 135, 30), rgb(0, 135, 30));
 }
 
-#posts-wrapper .list-group .list-group-item.acontecimento{
-  background-image: repeating-linear-gradient(to left , rgb(18, 25, 122), rgb(18, 25, 122));
+#posts-wrapper .list-group .list-group-item.acontecimento {
+  background-image: repeating-linear-gradient(to left, rgb(18, 25, 122), rgb(18, 25, 122));
 }
 
-#posts-wrapper .list-group-item{
+#posts-wrapper .list-group-item {
   border: none;
   color: rgb(60, 60, 60);
-
   transition: all ease 1s 0.2s;
-
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: 100% -100%;
-  background-size : 200% 200%;
+  background-size: 200% 200%;
 }
 
 #posts-wrapper .list-group .list-group-item.list-heading {
   margin-bottom: 1px;
-
   border-right: none;
   border-radius: 0px;
-
   font-size: 30px;
   font-weight: bold;
-
   background-color: white;
   color: rgb(34, 34, 34);
-
   border-top: rgb(34, 34, 34) solid 5px;
   border-bottom: rgb(34, 34, 34) solid 5px;
 }
@@ -167,12 +182,12 @@ body {
   font-size: 23px;
 }
 
-.footer{
+.footer {
   background-color: rgb(80, 80, 80);
   margin-bottom: 0px;
 }
 
-.footer h3{
+.footer h3 {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 0px;
