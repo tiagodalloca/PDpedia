@@ -127,7 +127,7 @@
             <a href="" id="post5" class="acontecimento list-group-item">Biscoito ou bolacha?</a>
             <a href="" id="post6" class="biografia list-group-item">Como invadir o DPD</a>
             <a href="" id="post7" class="acontecimento list-group-item">Como fazer um pTrem</a>
-            <a href="" id="post8" class=" artigo list-group-item">Para que programar?</a>
+            <a href="" id="post8" class="artigo list-group-item">Para que programar?</a>
             <a href="" id="post9" class="artigo list-group-item">As 1001 Dps</a>
             <a href="" id="post10" class="biografia list-group-item">Como programar em Delphi</a>
             <a href="" id="post11" class="acontecimento list-group-item">Aprenda sobre os atalhos do windows</a>
