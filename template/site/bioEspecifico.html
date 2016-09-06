@@ -39,15 +39,44 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#artigos">Artigos</a></li>
-          <li><a href="acontEspecifico.html">Acontecimentos</a></li>
-          <li><a href="bioEspecifico.html">Biografias</a></li>
+          <li class="dropdown dropdown-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Busca
+            </a>
+            <ul id="form-busca" class="dropdown-menu col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <li>
+                <form class="form-horizontal" role="search">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="termo-busca" placeholder="🔍">
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control col-xs-12 col-sm-12 col-md-4 col-lg-4" name="categoria-busca">
+                      <option value="1">Artigo</option>
+                      <option value="2">Acontecimento</option>
+                      <option value="3">Biografia</option>
+                      <option value="4">Todos</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control col-xs-12 col-sm-12 col-md-4 col-lg-4" name="data-busca">
+                      <option value="1">Qualquer data</option>
+                      <option value="2">Última semana</option>
+                      <option value="3">Último mês</option>
+                      <option value="4">Último ano</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-default" type="submit">Buscar</button>
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </li>
           <li class="dropdown dropdown-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
             </a>
-            <ul id="div-form-login" class="dropdown-menu">
+            <ul id="form-login" class="dropdown-menu">
               <li>
                 <form class="form-horizontal">
                   <div class="form-group">
@@ -69,7 +98,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Requisitar cadastro
             </a>
-            <ul id="div-form-cadastrar" class="dropdown-menu">
+            <ul id="form-cadastrar" class="dropdown-menu">
               <li>
                 <form class="form-horizontal">
                   <div class="form-group">
