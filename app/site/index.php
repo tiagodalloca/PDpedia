@@ -16,6 +16,8 @@
   <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
   <script src="js/index.js" charset="utf-8"></script>
+  <script src="../../api/apiClient.js" type="text/javascript"></script>
+  <script src="../../api/formatar.js" type="text/javascript"></script>
 
   <script type="text/javascript">
     $('.dropdown-menu').find('form').click(function(e) {
@@ -68,7 +70,7 @@
           </li>
           <li class="dropdown dropdown-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Requisitar cadastro
+              Cadastrar
             </a>
             <ul id="div-form-cadastrar" class="dropdown-menu">
               <li>
@@ -134,10 +136,6 @@
             <a href="" id="post14" class="biografia list-group-item">Como invadir o DPD</a>
             <a href="" id="post15" class="acontecimento list-group-item">Como fazer um pTrem</a>
             <a href="" id="post16" class=" artigo list-group-item">Para que programar?</a>
-            <a href="" id="post17" class=" biografia list-group-item">Como aumentar o desempenho?</a>
-            <a href="" id="post18" class=" acontecimento list-group-item">Assembly : a linguagem mais primitiva</a>
-            <a href="" id="post19" class=" biografia list-group-item">Como se dar bem nas provas?</a>
-            <a href="" id="post20" class=" artigo list-group-item">como gerenciar seu tempo</a>
           </div>
         </div>
 
@@ -147,20 +145,17 @@
         <br>
         <br>
 
-        <label  class="center text-center col-xs-6 col-sm-3 col-md-3 col-lg-3"
-                style="margin-top: 200px;">
+        <label class="center text-center col-xs-6 col-sm-3 col-md-3 col-lg-3">
           Quer escrever o que você pensa?
           <br>
-          <a href="escrever.html">Comece aqui!</a>
+          <a href="">Comece aqui!</a>
         </label>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    <center>
-      <h3>Feito com muito <3 e código</h1>
-    </center>
+    <h1>Mega ultra footer</h1>
   </div>
 
 </body>

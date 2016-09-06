@@ -1,0 +1,40 @@
+/*
+  ### BIOGRAFIA ESPECÍFICA
+*/
+
+#biografia {
+  background-color: #FFF;
+  height: 100%;
+}
+
+.amostraInfo {
+  background-color: #EEEEDD;
+  border-radius: 15px;
+}
+
+.amostraTexto {
+  background-color: #EEEEDD;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+#informacoesBio {
+  position: relative;
+  top : 30px;
+  left :0%;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th {
+  border: none;
+}
+
+.table-borderless thead tr td {
+  border-bottom: 1px solid rgba(#000000, 0.83);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}

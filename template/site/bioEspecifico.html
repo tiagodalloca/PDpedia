@@ -6,16 +6,15 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="css/theme.min.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
   <link rel="stylesheet" href="css/master.css">
-  <link rel="shortcut icon" href="images/PDpedia2.png">
-  <title>PDpedia</title>
+  <link rel="stylesheet" href="css/bioEspecifico.css">
+  <title>PDpedia - Biografia de chico</title>
 </head>
 
 <body>
   <script src="../../libraries/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../libraries/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-  <script src="js/index.js" charset="utf-8"></script>
 
   <script type="text/javascript">
     $('.dropdown-menu').find('form').click(function(e) {
@@ -104,65 +103,62 @@
   </nav>
 
   <div id="content">
-    <div id="hero" class="pagina container-fluid">
-      <div class="apresentacao container-fluid col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+    <div id="biografia" class="pagina container-fluid">
+      <div class="amostraInfo container-fluid col-xs-2 col-sm-2 col-md-2 col-lg-2" id="d1">
         <div class="row">
-          <img id="hero-logo" class="center" src="images/PDpedia.png">
-          <h1 class="text-center">PDpedia</h1>
-          <h3 class="text-center">Descubra, Registre, Compartilhe</h3>
-        </div>
-      </div>
-    </div>
-    <div id="main" class="pagina container-fluid">
-      <div id="posts-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="center col-xs-12 col-sm-12 col-md-9 col-lg-9">
-          <div class="list-group">
-            <a class="list-group-item list-heading text-center">Últimos <em>posts</em></a>
-            <a href="" id="post1" class="artigo list-group-item">As 1001 Dps</a>
-            <a href="" id="post2" class="biografia list-group-item">Como programar em Delphi</a>
-            <a href="" id="post3" class="acontecimento list-group-item">Aprenda sobre os atalhos do windows</a>
-            <a href="" id="post4" class="artigo list-group-item">Quantas USBs um computador suporta?</a>
-            <a href="" id="post5" class="acontecimento list-group-item">Biscoito ou bolacha?</a>
-            <a href="" id="post6" class="biografia list-group-item">Como invadir o DPD</a>
-            <a href="" id="post7" class="acontecimento list-group-item">Como fazer um pTrem</a>
-            <a href="" id="post8" class=" artigo list-group-item">Para que programar?</a>
-            <a href="" id="post9" class="artigo list-group-item">As 1001 Dps</a>
-            <a href="" id="post10" class="biografia list-group-item">Como programar em Delphi</a>
-            <a href="" id="post11" class="acontecimento list-group-item">Aprenda sobre os atalhos do windows</a>
-            <a href="" id="post12" class="artigo list-group-item">Quantas USBs um computador suporta?</a>
-            <a href="" id="post13" class="acontecimento list-group-item">Biscoito ou bolacha?</a>
-            <a href="" id="post14" class="biografia list-group-item">Como invadir o DPD</a>
-            <a href="" id="post15" class="acontecimento list-group-item">Como fazer um pTrem</a>
-            <a href="" id="post16" class=" artigo list-group-item">Para que programar?</a>
-            <a href="" id="post17" class=" biografia list-group-item">Como aumentar o desempenho?</a>
-            <a href="" id="post18" class=" acontecimento list-group-item">Assembly : a linguagem mais primitiva</a>
-            <a href="" id="post19" class=" biografia list-group-item">Como se dar bem nas provas?</a>
-            <a href="" id="post20" class=" artigo list-group-item">como gerenciar seu tempo</a>
+          <div class="table-responsive" style="overflow: hidden;">
+            <table id="informacoesBio" class="table table-reflow table-condensed table-borderless">
+              <thead>
+                <tr><td colspan='2' style="text-align: center;">
+                  <h1 class="text-center">
+                    <br><img src="images/chico.jpg" class="img img-responsive img-circle" style="display: inline-flex;"><br>
+                  </h1>
+                </td></tr>
+              </thead>
+              <tbody>
+                <tr><th>Nascimento:</th>
+                <td>12/10/1900 a.C.</td></tr>
+
+                <tr><th>Idade:</th>
+                <td>maxint</td></tr>
+
+                <tr><th>Ocupação:</th>
+                <td>Professor</td></tr>
+
+                <tr><th>Trabalho marcante:</th>
+                <td>pTrem</td></tr>
+
+                <tr><th>Curso Técnico:</th>
+                <td>Processamento de Dados</td></tr>
+
+                <tr><th>Universidade:</th>
+                <td>Unicamp</td></tr>
+
+                <tr><th>Prefere:</th>
+                <td>Delphi</td></tr>
+              </tbody>
+            </table>
+            <br>
           </div>
         </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <label  class="center text-center col-xs-6 col-sm-3 col-md-3 col-lg-3"
-                style="margin-top: 200px;">
-          Quer escrever o que você pensa?
-          <br>
-          <a href="escrever.html">Comece aqui!</a>
-        </label>
       </div>
+      <div class="amostra container-fluid col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <div class="row">
+        </div>
+      </div>
+      <div class="amostraTexto container-fluid col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <div class="row">
+          <h1>Francisco da Fonseca Rodrigues</h1>
+          <hr>
+          <p>  Francisco da Fonseca Rodrigues (1900 a.C.) é um professor do curso de informática da escola de ensino técnico COTUCA, Unicamp.</p>
+          <p>  Nascido na grande cidade que ninguém conhece, foi estudar no COTUCA e depois estudou na Unicamp e agora ele dá aula no COTUCA, será que depois ele dará aula na Unicamp? ninguém sabe...</p>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <div class="footer">
-    <center>
-      <h3>Feito com muito <3 e código</h1>
-    </center>
   </div>
-
 </body>
 
 </html>

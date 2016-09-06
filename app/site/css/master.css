@@ -1,0 +1,263 @@
+body {
+  overflow-x: hidden;
+}
+
+/*
+########
+  MENU
+########
+*/
+
+.navbar {
+  font-size: 17px;
+}
+.dropdown-large {
+  position: static !important;
+}
+.form-horizontal .form-group {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+#div-form-login {
+  z-index: 3;
+  background-color: white;
+}
+.dropdown-menu-large {
+  margin-left: 16px;
+  margin-right: 32px;
+  padding: 20px 0px;
+}
+
+/*
+###########
+  CONTENT
+###########
+*/
+
+
+/*
+  ### GERAL
+*/
+
+#content .pagina {
+  min-height: 50vh;
+}
+.align-middle {
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+
+.center {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+#content{
+  margin-bottom: 30vh;
+}
+
+/*
+  ### HERO
+*/
+
+#hero {
+  background-image: url("../images/hero-wallpaper.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.apresentacao {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+#hero-logo{
+  height: 60vh;
+  width: 60vh;
+}
+
+#hero h1, #hero h3{
+  color: white;
+}
+
+/*
+  ### MAIN
+*/
+
+
+#posts-wrapper {
+
+  margin-top: 100px;
+
+  background-color: transparent;
+  border: none;
+
+  /*padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;*/
+  font-size: 25px;
+}
+
+#posts-wrapper .list-group{
+  min-height: 80%;
+  border-color: #0a2979;
+}
+
+#posts-wrapper .list-group .list-group-item.artigo:hover{
+  background-position: 100% 100%;
+  color: white;
+}
+
+#posts-wrapper .list-group .list-group-item.biografia:hover{
+  background-position: 100% 100%;
+  color: white;
+}
+
+#posts-wrapper .list-group .list-group-item.acontecimento:hover{
+  background-position: 100% 100%;
+  color: white;
+}
+
+#posts-wrapper .list-group .list-group-item.artigo{
+  background-image: repeating-linear-gradient(to left , rgb(159, 10, 0), rgb(159, 10, 0));
+}
+
+#posts-wrapper .list-group .list-group-item.biografia{
+  background-image: repeating-linear-gradient(to left , rgb(0, 135, 30), rgb(0, 135, 30));
+}
+
+#posts-wrapper .list-group .list-group-item.acontecimento{
+  background-image: repeating-linear-gradient(to left , rgb(18, 25, 122), rgb(18, 25, 122));
+}
+
+#posts-wrapper .list-group-item{
+  border: none;
+  color: rgb(60, 60, 60);
+
+  transition: all ease 1s 0.2s;
+
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: 100% -100%;
+  background-size : 200% 200%;
+}
+
+#posts-wrapper .list-group .list-group-item.list-heading {
+  margin-bottom: 1px;
+
+  border-right: none;
+  border-radius: 0px;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  background-color: white;
+  color: rgb(34, 34, 34);
+
+  border-top: rgb(34, 34, 34) solid 5px;
+  border-bottom: rgb(34, 34, 34) solid 5px;
+}
+
+#posts-wrapper label {
+  margin-top: 60px;
+  font-size: 23px;
+}
+
+
+/*
+  ### BIOGRAFIA ESPECÍFICA
+*/
+
+#biografia {
+  background-color: #FFF;
+  height: 100%;
+}
+
+.amostraInfo {
+  background-color: #feffee;
+  border-radius: 15px;
+}
+
+.amostraTexto {
+  background-color: #feffee;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+#informacoesBio {
+  position: relative;
+  top : 30px;
+  left :0%;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th {
+  border: none;
+}
+
+.table-borderless thead tr td {
+  border-bottom: 1px solid #000;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+
+/*
+  ### MAIN
+*/
+
+.footer{
+  background-color: rgb(80, 80, 80);
+  height: 200px;
+}
+
+.footer h1{
+  position: relative;
+  top: 50%;
+  margin-left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  display: block;
+
+  color: white;
+  font-weight: bold;
+}
+
+/*
+  ### ACONTECIMENTO ESPECÍFICO
+*/
+
+#acontecimento {
+  background-color: #FFF;
+  height: 100%;
+}
+
+#amostraInfoAcont {
+  position: absolute;
+  top: 30px;
+}
+
+#tituloAcont {
+  position: absolute;
+  border: 5px solid black;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+#imagemAcont {
+  position: absolute;
+  top : 0px;
+  left: 0px;
+  width: 100%;
+}

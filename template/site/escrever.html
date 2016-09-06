@@ -5,9 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
   <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
-  <link rel="stylesheet" href="../../libraries/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../../libraries/bootstrap/css/normalize.css">
+  <!-- <link rel="stylesheet" href="../../libraries/highlight/css/atom-one-light.css"> -->
+  <!-- <link rel="stylesheet" href="../../libraries/highlight/css/github.css"> -->
+  <!-- <link rel="stylesheet" href="../../libraries/highlight/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="../../libraries/highlight/css/xcode.css">
   <link rel="stylesheet" href="css/theme.min.css">
   <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/escrever.css">
   <link rel="shortcut icon" href="images/PDpedia2.png">
   <title>PDpedia</title>
 </head>
@@ -22,6 +27,11 @@
       e.stopPropagation();
     });
   </script>
+
+  <script src="js/escrever.js" charset="utf-8"></script>
+  <script src="js/marked.js" charset="utf-8"></script>
+  <script src="../../libraries/remarkable/remarkable.js" charset="utf-8"></script>
+  <script src="../../libraries/highlight/highlight.js" charset="utf-8"></script>
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -38,7 +48,7 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.html">Home</a></li>
           <li><a href="#artigos">Artigos</a></li>
@@ -75,7 +85,7 @@
                 <form class="form-horizontal">
                   <div class="form-group">
                     <label for="loginID" class="control-label">ID</label>
-                    <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
+                    <input type="text" class="form-control" id="loginID" placeholder="url...">
                   </div>
                   <div class="form-group">
                     <label for="loginNome" class="control-label">Nome</label>
@@ -103,63 +113,58 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <div id="content">
-    <div id="hero" class="pagina container-fluid">
-      <div class="apresentacao container-fluid col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <div class="row">
-          <img id="hero-logo" class="center" src="images/PDpedia.png">
-          <h1 class="text-center">PDpedia</h1>
-          <h3 class="text-center">Descubra, Registre, Compartilhe</h3>
-        </div>
-      </div>
-    </div>
-    <div id="main" class="pagina container-fluid">
-      <div id="posts-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="center col-xs-12 col-sm-12 col-md-9 col-lg-9">
-          <div class="list-group">
-            <a class="list-group-item list-heading text-center">Últimos <em>posts</em></a>
-            <a href="" id="post1" class="artigo list-group-item">As 1001 Dps</a>
-            <a href="" id="post2" class="biografia list-group-item">Como programar em Delphi</a>
-            <a href="" id="post3" class="acontecimento list-group-item">Aprenda sobre os atalhos do windows</a>
-            <a href="" id="post4" class="artigo list-group-item">Quantas USBs um computador suporta?</a>
-            <a href="" id="post5" class="acontecimento list-group-item">Biscoito ou bolacha?</a>
-            <a href="" id="post6" class="biografia list-group-item">Como invadir o DPD</a>
-            <a href="" id="post7" class="acontecimento list-group-item">Como fazer um pTrem</a>
-            <a href="" id="post8" class=" artigo list-group-item">Para que programar?</a>
-            <a href="" id="post9" class="artigo list-group-item">As 1001 Dps</a>
-            <a href="" id="post10" class="biografia list-group-item">Como programar em Delphi</a>
-            <a href="" id="post11" class="acontecimento list-group-item">Aprenda sobre os atalhos do windows</a>
-            <a href="" id="post12" class="artigo list-group-item">Quantas USBs um computador suporta?</a>
-            <a href="" id="post13" class="acontecimento list-group-item">Biscoito ou bolacha?</a>
-            <a href="" id="post14" class="biografia list-group-item">Como invadir o DPD</a>
-            <a href="" id="post15" class="acontecimento list-group-item">Como fazer um pTrem</a>
-            <a href="" id="post16" class=" artigo list-group-item">Para que programar?</a>
-            <a href="" id="post17" class=" biografia list-group-item">Como aumentar o desempenho?</a>
-            <a href="" id="post18" class=" acontecimento list-group-item">Assembly : a linguagem mais primitiva</a>
-            <a href="" id="post19" class=" biografia list-group-item">Como se dar bem nas provas?</a>
-            <a href="" id="post20" class=" artigo list-group-item">como gerenciar seu tempo</a>
+  <div id="content" class="container-fluid">
+    <center>
+      <h1 style="margin-bottom: 70px;">Página para criação de conteúdo</h1>
+    </center>
+    <div id="menu-do-caderno" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active" style="text-align:center;"><a href="#">Adicionar propriedade</a></li>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label">Tipo de conteúdo</label>
+            <select class="form-control">
+              <option value="1">Artigo</option>
+              <option value="2">Acontecimento</option>
+              <option value="3">Biografia</option>
+            </select>
           </div>
-        </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <label  class="center text-center col-xs-6 col-sm-3 col-md-3 col-lg-3"
-                style="margin-top: 200px;">
-          Quer escrever o que você pensa?
+          <div class="form-group">
+            <label class="control-label">Imagem de fundo</label>
+            <input type="text" class="form-control" placeholder="http:\\url\da\imagem.jpg">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Coisa interessante #1</label>
+            <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #1">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Coisa interessante #2</label>
+            <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #2">
+          </div>
           <br>
-          <a href="escrever.html">Comece aqui!</a>
-        </label>
-      </div>
+          <button type="button" class="form-control btn-default" id="cadastrarConf">Submeter</button>
+          <br><br>
+        </form>
+      </ul>
+    </div>
+
+    <div class="btn-group col-xs-12 col-sm-12 col-md-8 col-lg-8">
+      <button id="ver-texto" type="button" class="btn btn-default">Texto</button>
+      <button id="ver-html" type="button" class="btn btn-default">Preview</button>
+      <!-- <nav class="navbar navbar-default">
+        <ul class="nav nav-pills">
+            <li id="ver-texto" class="active"><a>Texto</a></li>
+            <li id="ver-html"><a>Preview</a></li>
+          </ul>
+      </nav> -->
+      <textarea id="lugar-onde-escreve" class="caderno"></textarea>
+      <div id="html-preview" class="caderno" style="display:none;"></div>
     </div>
   </div>
 
   <div class="footer">
     <center>
-      <h3>Feito com muito <3 e código</h1>
+      <h3>Feito com muito <3 e código </h3>
     </center>
   </div>
 
