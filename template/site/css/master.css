@@ -59,6 +59,47 @@ body {
 
 
 /*
+  ### DESCRICAO
+*/
+
+.descricao{
+  min-height: 500px;
+  height: 100vh;
+  margin-bottom: 100px;
+  padding-left: 0px;
+
+  background-color: rgb(147, 18, 18);
+  color: white;
+
+}
+
+.descricao.h1 {
+  margin-top: 0px;
+}
+
+.descricao.h1 h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 0px;
+  transform: translateX(-50%) translateY(-50%);
+  width: 80%;
+  font-size: 50px;
+  color: white;
+}
+
+.descricao.p {
+  padding-top: 20vh;
+  padding-bottom: 25vh;
+  padding-right: 100px;
+
+  margin-bottom: 150px;
+
+  font-size: 30px;
+}
+
+
+/*
   ### GERAL
 */
 
@@ -113,13 +154,8 @@ body {
 */
 
 #posts-wrapper {
-  margin-top: 100px;
   background-color: transparent;
   border: none;
-  /*padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 100px;
-  padding-right: 100px;*/
   font-size: 25px;
 }
 
