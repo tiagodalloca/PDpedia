@@ -115,3 +115,14 @@ function especifico(tipo, id) {
       break;
   }
 }
+ // a string "imagemBinaria" contém a imagem obtida pelo banco de dados
+ // a string "imgId" contém o ID da img que terá seu atributo src alterado
+ // funcionará apenas com JPEG
+function formatarImagemEm(imagemBinaria, imgId)
+{
+  document.getElementById(imgId).src = 'data:image/jpeg;base64,' + hexToBase64(imagemBinaria);
+}
+
+function hexToBase64(str) {
+    return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
+}
