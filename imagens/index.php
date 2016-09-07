@@ -13,7 +13,7 @@
 		    imagedestroy($im);
 		}
 		else {
-		    echo 'An error occurred.';
+		    echo 'Deu ruim!';
 		}
 	}
 		// formatação necessária em javascript(já disponível em formatar.js) ->
@@ -25,13 +25,13 @@ function catarDoBancoBinario($nomeDaImagem){
 }
 
 function GetFileData($sFilePath){
-  $fp = fopen($sFilePath, 'rb') or die('404! Unable to open file!');
+  $fp = fopen($sFilePath, 'rb') or die('404! Deu ruim!');
   $buf = '';
   while(!feof($fp)){
       $buf .= fgets($fp, 4096);
   }
   fclose($fp);
-	return $buf; //returns False if failed, else the contents up to FileSize bytes.
+	return $buf; //retorna False se deu ruim, se não o conteúdo daquela imagem
 }
 
 function existeNoBanco($nomeDaImagem){
