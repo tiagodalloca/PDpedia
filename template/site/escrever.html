@@ -6,10 +6,10 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=1">
   <link rel="stylesheet" href="../../dependencies/bootstrap/css/normalize.css">
   <link rel="stylesheet" href="../../dependencies/bootstrap/css/normalize.css">
-  <!-- <link rel="stylesheet" href="../../dependencies/highlight/css/atom-one-light.css"> -->
+  <link rel="stylesheet" href="../../dependencies/highlight/css/atom-one-light.css">
   <!-- <link rel="stylesheet" href="../../dependencies/highlight/css/github.css"> -->
   <!-- <link rel="stylesheet" href="../../dependencies/highlight/css/monokai-sublime.css"> -->
-  <link rel="stylesheet" href="../../dependencies/highlight/css/xcode.css">
+  <!-- <link rel="stylesheet" href="../../dependencies/highlight/css/xcode.css"> -->
   <link rel="stylesheet" href="css/theme.min.css">
   <link rel="stylesheet" href="css/master.css">
   <link rel="stylesheet" href="css/escrever.css">
@@ -153,7 +153,7 @@
     </center>
     <div id="menu-do-caderno" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active" style="text-align:center;"><a href="#">Adicionar propriedade</a></li>
+        <li id="adicionar_propriedade" class="active" style="text-align:center;"><a href="#">Adicionar propriedade</a></li>
         <form class="form-horizontal">
           <div class="form-group">
             <label class="control-label">Categoria</label>
@@ -164,7 +164,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="control-label">Imagem de fundo</label>
+            <label class="control-label">Imagem principal</label>
             <input type="text" class="form-control" placeholder="http:\\url\da\imagem.jpg">
           </div>
           <div class="form-group">
@@ -176,13 +176,13 @@
             <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #2">
           </div>
           <br>
-          <button type="button" class="form-control btn-default" id="cadastrarConf">Submeter</button>
+          <button type="submit" class="form-control btn-default" id="cadastrarConf">Submeter</button>
           <br><br>
         </form>
       </ul>
     </div>
 
-    <div class="btn-group col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
       <!-- <button id="ver-texto" type="button" class="btn btn-default">Texto</button>
       <button id="ver-html" type="button" class="btn btn-default">Preview</button> -->
       <nav class="navbar" style="margin-bottom:-5px;">
