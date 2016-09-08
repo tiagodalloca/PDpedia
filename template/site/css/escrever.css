@@ -9,13 +9,14 @@
   padding: 0px;
   font-family: monospace;
   overflow-y: auto;
-  border-radius: 3px;
   border: 1px solid rgb(231, 231, 231);
 }
 
-textarea.caderno {
-  margin-left: 1.5px;
-}
+.nav-tabs > li {
+  left: -1px;
+}44
+
+
 
 #html-preview {
   padding: 20px;
