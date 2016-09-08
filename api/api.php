@@ -13,6 +13,7 @@
 
   $config_file = fopen("config.json", "r");
   $config = json_decode(fread($config_file, filesize("config.json")), true);
+  fclose($config_file);
 
   $infos = getURLArgs();
   $ret = lidarComRequest(
