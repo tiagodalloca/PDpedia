@@ -38,7 +38,7 @@
     switch ($metodo) {
       case 'GET':
         $nome = $_GET["nome"];
-        $cmd = sqlsrv_prepare($db, "SELECT bytes FROM Imagem WHERE nome = ?", array( &$nome));
+        $cmd = sqlsrv_prepare($db, "SELECT * FROM Imagem WHERE nome = ?", array( &$nome));
 
         if(!$cmd)
           die("0");
@@ -46,10 +46,10 @@
         if (sqlsrv_execute($cmd) != false){
           $ret = sqlsrv_fetch_array($cmd, SQLSRV_FETCH_ASSOC);
           $bytes = base64_decode($ret["bytes"]);
+          $url = $ret["url"];
           if ($bytes != ""){
             $image = imagecreatefromstring($bytes);
-            header('Content-Type: image/jpeg');
-            imagejpeg($image);
+            printImagem($url, $image);
             imagedestroy($image);
           }
         }
@@ -83,21 +83,77 @@
   }
 
   function getImageData($url){
-    // $fp = fopen($url, 'rb') or die("404! Deu ruim!");
-    // $buf = "";
-    // while(!feof($fp)){
-    //     $buf .= fgets($fp, 4096);
-    // }
-    // fclose($fp);
-    // return $buf; //retorna False se deu ruim, se não o conteúdo daquela imagem
-    //
-    $process = curl_init($url);
-    curl_setopt($process, CURLOPT_HEADER, 0);
-    curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($process, CURLOPT_BINARYTRANSFER, 1);
-    $raw = curl_exec($process);
-    curl_close($process);
+    $fp = fopen($url, 'rb') or die("404! Deu ruim!");
+    $raw = "";
+    while(!feof($fp)){
+        $raw .= fgets($fp, 4096);
+    }
+    fclose($fp);
+
+    // $process = curl_init($url);
+    // curl_setopt($process, CURLOPT_HEADER, 0);
+    // curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
+    // curl_setopt($process, CURLOPT_BINARYTRANSFER, 1);
+    // $raw = curl_exec($process);
+    // curl_close($process);
+
+
+    // $raw = file_get_contents($url);
+
     return $raw;
+  }
+
+  function printImagem($url, $image){
+    $ext = pathinfo($url, PATHINFO_EXTENSION);
+    switch ($ext) {
+      case 'gif':
+      header('Content-Type: image/gif');
+      imagegif($image);
+        break;
+
+      case 'jpeg':
+      header('Content-Type: image/jpg');
+      imagejpeg($image);
+        break;
+
+      case 'jpg':
+      header('Content-Type: image/jpg');
+      imagejpeg($image);
+        break;
+
+      case 'png':
+      header('Content-Type: image/png');
+
+      $height = ImageSY($image);
+      $width = ImageSX($image);
+      $maxWidth = 250;
+      $maxHeight = 250;
+      $quality = 9;
+
+      $canvas = imagecreatetruecolor($width, $height);
+      imagealphablending($canvas, false);
+      $background = imagecolorallocatealpha($canvas, 255, 255, 255, 127);
+      imagefilledrectangle($canvas, 0, 0, $width, $height, $background);
+      imagealphablending($canvas, true);
+
+      $leftOffset = 0;
+      $topOffset = 0;
+
+      imagecopyresampled($canvas, $image, $leftOffset, $topOffset, 0, 0, $width, $height, $width, $height);
+      imagealphablending($canvas, true);
+      imagesavealpha($canvas, true);
+      imagepng($canvas);
+        break;
+
+      case 'bmp':
+      header('Content-Type: image/bmp');
+      imagewbmp($image);
+        break;
+
+      default:
+        # code...
+        break;
+    }
   }
 
 ?>
