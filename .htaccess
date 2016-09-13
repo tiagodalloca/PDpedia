@@ -1,0 +1,8 @@
+<Files ~ "\.json$">
+    Order allow,deny
+    Deny from all
+</Files>
+<Files ~ "\.db$">
+    Order allow,deny
+    Deny from all
+</Files>

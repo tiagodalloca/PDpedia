@@ -16,3 +16,7 @@ Hoje-em-dia o PDpedia tem quatro integrantes: Tiago Dall'Oca, Daniel Campioni, P
 
 Nesse projeto estão sendo utilizadas as linguagens PHP, JavaScript, HTML e CSS, juntamente com o banco de dados SQLite.
 Elas estão sendo utilizadas pois os desenvolvedores do projeto sabem utilizar bem as linguagens e tem prática em utilizá-las.
+
+## Previsão v1.0
+
+A primeira versão oficial do PDpedia está programada para estar pronta no final do ano de 2016, mas não será a última versão do projeto(tudo pode acontecer).

@@ -9,12 +9,11 @@
   padding: 0px;
   font-family: monospace;
   overflow-y: auto;
-  border-radius: 3px;
   border: 1px solid rgb(231, 231, 231);
 }
 
-textarea.caderno {
-  margin-left: 1.5px;
+.nav-tabs>li {
+  left: -1px;
 }
 
 #html-preview {
@@ -30,6 +29,7 @@ textarea.caderno {
   cursor: pointer;
 }
 
+
 /*.nav li.active a{
   color: white;
   background-color: rgb(77, 148, 255);
@@ -37,4 +37,8 @@ textarea.caderno {
 
 code {
   font-size: 15px;
+}
+
+form button[type="submit"] {
+  width: 200px;
 }

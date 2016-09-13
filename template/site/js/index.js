@@ -31,19 +31,19 @@ const GLOBAL = {
           else
             $(".apresentacaoAcont2").height($(".apresentacaoAcont3").height());
 
-        }      
+        }
     },
 
     Artigo: {
         inicializar: function () {
           return 0;
-        }    
+        }
     },
 
     Biografia: {
         inicializar: function () {
           return 0;
-        }   
+        }
     }
 };
 
