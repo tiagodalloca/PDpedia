@@ -57,10 +57,18 @@ function aumentarTabelaMontar(IDTabela, campo) {
 }
 
 /* insere um campo na tabela para criar um artigo, acont, ou bio (adicionar os campos) */
-function aumentarTabelaCriar(IDTabela, IDs) {
+/*
+IDTabela       = ID da tabela em questão
+IDs            = IDs dos inputs header e valor 
+headerAndValue = valor default dos inputs
+*/
+function aumentarTabelaCriar(IDTabela, IDs, headerAndValue) {
   var tab = document.getElementById(IDTabela).tBodies[0];
   var x = tab.innerHTML.split("  ");
-  x.push("<tr><td><input type='text' id='" + IDs[0] + "'></td><td><input type='text' id='" + IDs[1] + "'></td></tr>  ");
+  if (headerAndValue == null)
+    x.push("<tr><td><label for='" + IDs[0] + "'>Header:</label><input type='text' class='form-control' id='" + IDs[0] + "'></td><td><label for='" + IDs[1] + "'>Valor:</label><input type='text' class='form-control' id='" + IDs[1] + "'></td></tr>  ");
+  else
+    x.push("<tr><td><label for='" + IDs[0] + "'>Header:</label><input type='text' class='form-control' id='" + IDs[0] + "' value='"+headerAndValue[0]+"'></td><td><label for='" + IDs[1] + "'>Valor:</label><input type='text' class='form-control' id='" + IDs[1] + "' value='"+headerAndValue[1]+"'></td></tr>  ");
   tab.innerHTML = "";
   for (var i = 0; i <= x.length - 1; i++) {
     tab.innerHTML += x[i];

@@ -163,26 +163,14 @@
               <option value="3">Biografia</option>
             </select>
           </div>
-          <div class="form-group">
-            <label class="control-label">Imagem principal</label>
-            <input type="text" class="form-control" placeholder="http:\\url\da\imagem.jpg">
-          </div>
-          <div class="form-group">
-            <label class="control-label">Coisa interessante #1</label>
-            <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #1">
-          </div>
-          <div class="form-group">
-            <label class="control-label">Coisa interessante #2</label>
-            <input type="" class="form-control" value="Foi a primeira pessoa a fazer coisa interessante #2">
-          </div>
-          <br>
-          <button type="submit" class="form-control btn-default" id="cadastrarConf">Submeter</button>
-          <br><br>
 
-          <table id="tabelaCampos" class="table table-striped">
+          <table id="tabelaCampos" class="table table-striped table-bordered">
             <tbody>
             </tbody>
           </table>
+          <br>
+          <button type="submit" class="form-control btn-default" id="cadastrarConf">Submeter</button>
+          <br><br>
           
         </form>
       </ul>
@@ -209,5 +197,10 @@
   </div>
 
 </body>
+<script language="javascript">
 
+
+aumentarTabelaCriar("tabelaCampos", 123, ["URL da imagem", "http"]);
+aumentarTabelaCriar("tabelaCampos", 123, ["Esse header", "valorzão"]);
+</script>
 </html>
