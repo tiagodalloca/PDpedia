@@ -153,25 +153,28 @@
     </center>
     <div id="menu-do-caderno" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
       <ul class="nav nav-pills nav-stacked">
-        <li id="adicionar_propriedade" class="active" style="text-align:center;"><a href="#">Adicionar propriedade</a></li>
+        <h2 style="border-bottom: 2px solid rgb(55, 55, 55)">Propriedades</h2>
         <form class="form-horizontal">
-          <div class="form-group">
-            <label class="control-label">Categoria</label>
-            <select class="form-control">
-              <option value="1">Artigo</option>
-              <option value="2">Acontecimento</option>
-              <option value="3">Biografia</option>
-            </select>
-          </div>
+          <label class="control-label">Categoria</label>
+          <select class="form-control">
+            <option value="1">Artigo</option>
+            <option value="2">Acontecimento</option>
+            <option value="3">Biografia</option>
+          </select>
+          <br />
 
           <table id="tabelaCampos" class="table table-striped table-bordered">
             <tbody>
             </tbody>
           </table>
-          <br>
-          <button type="submit" class="form-control btn-default" id="cadastrarConf">Submeter</button>
+          <button type="button" class="form-control btn-default" id="addRow">Adicionar</button>
+          <button type="button" class="form-control btn-default" id="removeRow">Remover</button>
+
+
           <br><br>
-          
+          <button type="submit" class="form-control btn-submit" id="cadastrarConf">Submeter</button>
+          <br><br>
+
         </form>
       </ul>
     </div>
@@ -198,9 +201,7 @@
 
 </body>
 <script language="javascript">
-
-
-aumentarTabelaCriar("tabelaCampos", 123, ["URL da imagem", "http"]);
-aumentarTabelaCriar("tabelaCampos", 123, ["Esse header", "valorzão"]);
+  aumentarTabelaCriar("tabelaCampos", 123, ["URL da imagem", "http"]);
+  aumentarTabelaCriar("tabelaCampos", 123, ["Esse header", "valorzão"]);
 </script>
 </html>

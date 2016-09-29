@@ -42,3 +42,17 @@ code {
 form button[type="submit"] {
   width: 200px;
 }
+
+#addRow, #removeRow{
+  float: left;
+  width: 35%;
+  margin-right: 10px;
+  color: white;
+}
+
+#addRow{
+  background-color: rgb(99, 177, 62);
+}
+#removeRow{
+  background-color: rgb(215, 54, 11);
+}
