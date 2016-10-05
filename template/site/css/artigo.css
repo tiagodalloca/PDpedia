@@ -2,12 +2,24 @@
   ### ACONTECIMENTO ESPECÍFICO
 */
 
-#acontecimento {
-  background-color: #FFF;
-  height: 100%;
+.propriedades-conteudo {
+  margin-top: 60px;
+  background-color: white;
+  border-right: 1px solid rgb(177, 177, 177);
+  /*border-bottom: 2px solid gray;*/
 }
 
-#amostraInfoAcont {
+.texto-conteudo {
+  background-color: white;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+#propriedades-conteudoAcont {
   position: absolute;
   top: 30px;
 }

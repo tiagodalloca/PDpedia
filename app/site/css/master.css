@@ -176,12 +176,12 @@ body {
   height: 100%;
 }
 
-.amostraInfo {
+.propriedades-conteudo {
   background-color: #feffee;
   border-radius: 15px;
 }
 
-.amostraTexto {
+.texto-conteudo {
   background-color: #feffee;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -239,7 +239,7 @@ body {
   height: 100%;
 }
 
-#amostraInfoAcont {
+#propriedades-conteudoAcont {
   position: absolute;
   top: 30px;
 }
