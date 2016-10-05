@@ -16,7 +16,7 @@ $("a").click(function(e) {
 
 $(function(){
     $("#maquina-de-escrever").typed({
-      strings: ["Descubra", "Registre", "Compartilhe", "Que burro esse Campioni", "O Rominho é uma pessoas extremamente"],
+      strings: ["Descubra", "Registre", "Compartilhe", "E muito mais", "Com o PDpedia"],
       typeSpeed: 0
     });
 });
