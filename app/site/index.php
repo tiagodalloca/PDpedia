@@ -45,7 +45,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="#artigos">Acontecimento</a></li>
           <li><a href="artigo.html">Artigo</a></li>
-          <li><a href="bigrafia.html">Biografias</a></li>
+          <li><a href="biografia.html">Biografias</a></li>
           <li class="dropdown dropdown-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
