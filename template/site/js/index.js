@@ -14,6 +14,14 @@ $("a").click(function(e) {
     goToByScroll(this.id);
 });
 
+$(function(){
+    $("#maquina-de-escrever").typed({
+      strings: ["Descubra", "Registre", "Compartilhe", "Que burro esse Campioni", "O Rominho é uma pessoas extremamente"],
+      typeSpeed: 0
+    });
+});
+
+
 /*
   Contante que armazena os métodos de cada uma das páginas separadamente
 */
