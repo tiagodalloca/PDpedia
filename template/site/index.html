@@ -13,173 +13,173 @@
 </head>
 
 <body>
-<div  id="wrap">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  <div id="wrap">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <!--  Esse é um daqueles botões de "hambúrger"-->
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <a class="navbar-brand" href="#">PDpedia</a> -->
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <div class="navbar-header">
-          <!-- <a class="navbar-brand" href="./">PDpedia</a> -->
+          <!-- <a class="navbar-brand" href="#">PDpedia</a> -->
         </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown dropdown-large">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="navbar-header">
+            <!-- <a class="navbar-brand" href="./">PDpedia</a> -->
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown dropdown-large">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Busca
             </a>
-            <ul id="form-busca" class="dropdown-menu col-xs-12 col-sm-12 col-md-3 col-lg-3">
-              <li>
-                <form class="form-horizontal" role="search">
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="termo-busca" placeholder="🔍">
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control col-xs-12 col-sm-12 col-md-4 col-lg-4" name="categoria-busca">
+              <ul id="form-busca" class="dropdown-menu col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <li>
+                  <form class="form-horizontal" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="termo-busca" placeholder="🔍">
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control col-xs-12 col-sm-12 col-md-4 col-lg-4" name="categoria-busca">
                       <option value="0">Todos</option>
                       <option value="1">Artigo</option>
                       <option value="2">Acontecimento</option>
                       <option value="3">Biografia</option>
                     </select>
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control col-xs-12 col-sm-12 col-md-4 col-lg-4" name="data-busca">
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control col-xs-12 col-sm-12 col-md-4 col-lg-4" name="data-busca">
                       <option value="0">Qualquer data</option>
                       <option value="1">Última semana</option>
                       <option value="2">Último mês</option>
                       <option value="3">Último ano</option>
                     </select>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-default" type="submit">Buscar</button>
-                  </div>
-                </form>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown dropdown-large">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-default" type="submit">Buscar</button>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown dropdown-large">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
             </a>
-            <ul id="form-login" class="dropdown-menu">
-              <li>
-                <form class="form-horizontal">
-                  <div class="form-group">
-                    <label for="loginID" class="control-label">ID</label>
-                    <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
-                  </div>
-                  <div class="form-group">
-                    <label for="loginPass" class="control-label">Password</label>
-                    <input type="password" class="form-control" id="loginPass" placeholder="Enter Password">
-                  </div>
-                  <div class="form-group">
-                    <button type="button" class="form-control btn-default" id="loginConf">Logar</button>
-                  </div>
-                </form>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown dropdown-large">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <ul id="form-login" class="dropdown-menu">
+                <li>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="loginID" class="control-label">ID</label>
+                      <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
+                    </div>
+                    <div class="form-group">
+                      <label for="loginPass" class="control-label">Password</label>
+                      <input type="password" class="form-control" id="loginPass" placeholder="Enter Password">
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="form-control btn-default" id="loginConf">Logar</button>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown dropdown-large">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Requisitar cadastro
             </a>
-            <ul id="form-cadastrar" class="dropdown-menu">
-              <li>
-                <form class="form-horizontal">
-                  <div class="form-group">
-                    <label for="loginID" class="control-label">ID</label>
-                    <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
-                  </div>
-                  <div class="form-group">
-                    <label for="loginNome" class="control-label">Nome</label>
-                    <input type="text" class="form-control" id="loginNome" placeholder="Enter Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="cadastrarPass" class="control-label">Password</label>
-                    <input type="password" class="form-control" id="cadastrarPass" placeholder="Enter Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="cadastrarConfPass" class="control-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="cadastrarConfPass" placeholder="Repeat Password">
-                  </div>
-                  <div class="form-group">
-                    <button type="button" class="form-control btn-default" id="cadastrarConf">Cadastrar</button>
-                  </div>
-                </form>
-              </li>
-            </ul>
-          </li>
-        </ul>
+              <ul id="form-cadastrar" class="dropdown-menu">
+                <li>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="loginID" class="control-label">ID</label>
+                      <input type="text" class="form-control" id="loginID" placeholder="Enter ID">
+                    </div>
+                    <div class="form-group">
+                      <label for="loginNome" class="control-label">Nome</label>
+                      <input type="text" class="form-control" id="loginNome" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="cadastrarPass" class="control-label">Password</label>
+                      <input type="password" class="form-control" id="cadastrarPass" placeholder="Enter Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="cadastrarConfPass" class="control-label">Confirm Password</label>
+                      <input type="password" class="form-control" id="cadastrarConfPass" placeholder="Repeat Password">
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="form-control btn-default" id="cadastrarConf">Cadastrar</button>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-  </nav>
+      <!-- /.container-fluid -->
+    </nav>
 
-  <div id="content">
-    <div id="hero" class="pagina container-fluid">
-      <div id="codigo-escrevendo" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-        <span id="maquina-de-escrever"></span>
-      </div>
-      <div class="apresentacao container-fluid">
-        <div class="row">
-          <img id="hero-logo" class="center" src="images/PDpedia.png">
-          <!-- <h1 class="text-center" style="color:gray">PDpedia</h1> -->
-          <h3 class="text-center">
+    <div id="content">
+      <div id="hero" class="pagina container-fluid">
+        <div id="codigo-escrevendo" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <span id="maquina-de-escrever"></span>
+        </div>
+        <div class="apresentacao container-fluid">
+          <div class="row">
+            <img id="hero-logo" class="center" src="images/PDpedia.png">
+            <!-- <h1 class="text-center" style="color:gray">PDpedia</h1> -->
+            <h3 class="text-center">
             <span id="maquina-de-apresentar"></span>
           </h3>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="descricao h1 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <center>
-        <h1>
+      <div class="descricao h1 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <center>
+          <h1>
           Por que?
           </h1>
-        <div id="explicao" class="container-fluid">
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="row">
-              <img src="images/icons/idea.png" />
+          <div id="explicao" class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <div class="row">
+                <img src="images/icons/idea.png" />
+              </div>
+              <h1>A Ideia<br><hr></h1>
+              <p>Permite o compartilhamento de conteúdo referente ao curso de maneira fácil e prática</p>
             </div>
-            <h1>A Ideia<br><hr></h1>
-            <p>Permite o compartilhamento de conteúdo referente ao curso de maneira fácil e prática</p>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="row">
-              <img src="images/icons/share.png" />
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <div class="row">
+                <img src="images/icons/share.png" />
+              </div>
+              <h1>Conecatado<br><hr></h1>
+              <p>Conecta os alunos do curso, tornando-os mais interessados e engajados no dia a dia acadêmico</p>
             </div>
-            <h1>Conecatado<br><hr></h1>
-            <p>Conecta os alunos do curso, tornando-os mais interessados e engajados no dia a dia acadêmico</p>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="row">
-              <img src="images/icons/video-player.png" />
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <div class="row">
+                <img src="images/icons/video-player.png" />
+              </div>
+              <h1>Multimidia<br><hr></h1>
+              <p>Compartilhamento multimidia à dispocição: código, links, imagens e vídeos</p>
             </div>
-            <h1>Multimidia<br><hr></h1>
-            <p>Compartilhamento multimidia à dispocição: código, links, imagens e vídeos</p>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="row">
-              <img src="images/icons/locked.png" />
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <div class="row">
+                <img src="images/icons/locked.png" />
+              </div>
+              <h1>Seguro<br><hr></h1>
+              <p>O site está disponível apenas aos aluno de informática. Ou seja, a entimidade está garantida! </p>
             </div>
-            <h1>Seguro<br><hr></h1>
-            <p>O site está disponível apenas aos aluno de informática. Ou seja, a entimidade está garantida! </p>
           </div>
-        </div>
-      </center>
-    </div>
-    <div id="main" class="pagina container-fluid">
+        </center>
+      </div>
+      <div id="main" class="pagina container-fluid">
 
         <div id="posts-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="center col-xs-12 col-sm-12 col-md-9 col-lg-9">
@@ -221,16 +221,17 @@
           </label>
         </div>
       </div>
-<footer class="footer">
-      <div class="container">
-        <center>
-          <p class="text-muted">Site feito especialmente para você!</p>
-        </center>
-      </div>
-    </footer>
-      </div>
+      <footer class="footer">
+        <div class="container">
+          <center>
+            <p class="text-muted">Feito com <img src="images/icons/like.png" style="height:30px; width:auto"> & código</p>
+          </center>
+          <div style="position:absolute; left: 0px;">Icons made by <a href="http://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+        </div>
+      </footer>
+    </div>
   </div>
-</div>
+  </div>
   <script src="../../dependencies/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../dependencies/bootstrap/js/bootstrap.js" type="text/javascript"></script>
   <script src="../../dependencies/typed/typed.js" type="text/javascript"></script>
@@ -244,5 +245,5 @@
   </script>
 
 </body>
-<div>Icons made by <a href="http://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
 </html>
