@@ -62,15 +62,13 @@ body {
   ### DESCRICAO
 */
 
-.descricao{
+.descricao {
   min-height: 500px;
   height: 100vh;
   margin-bottom: 100px;
   padding-left: 0px;
-
   background-color: rgb(147, 18, 18);
   color: white;
-
 }
 
 .descricao.h1 {
@@ -92,9 +90,7 @@ body {
   padding-top: 20vh;
   padding-bottom: 25vh;
   padding-right: 100px;
-
   margin-bottom: 150px;
-
   font-size: 30px;
 }
 
@@ -132,10 +128,12 @@ body {
   height: 100vh;
 }
 
-#codigo-escrevendo{
+#codigo-escrevendo {
   height: 100vh;
 }
-#maquina-de-escrever{
+
+#maquina-de-escrever {
+  white-space:pre;
   margin-top: 70px;
   font-family: monospace;
   font-size: 10px;
@@ -151,7 +149,8 @@ body {
 }
 
 #hero-logo {
-  width: 50vw; /* you can use % */
+  width: 50vw;
+  /* you can use % */
   height: auto;
 }
 
@@ -159,7 +158,7 @@ body {
   color: rgb(77, 77, 77);
 }
 
-#hero h3{
+#hero h3 {
   text-align: center;
   min-height: 30px;
   /*border-bottom: 1px solid rgb(77, 77, 77);*/
@@ -167,29 +166,51 @@ body {
   font-weight: 600;
 }
 
-.typed-cursor{
-  float: left;
+.typed-cursor {
+  /*float: left;*/
   color: rgb(208, 14, 43);
   opacity: 1;
   -webkit-animation: blink 0.7s infinite;
   -moz-animation: blink 0.7s infinite;
   animation: blink 0.7s infinite;
 }
-@keyframes blink{
-  0% { opacity:1; }
-  50% { opacity:0; }
-  100% { opacity:1; }
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-webkit-keyframes blink{
-  0% { opacity:1; }
-  50% { opacity:0; }
-  100% { opacity:1; }
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-moz-keyframes blink{
-  0% { opacity:1; }
-  50% { opacity:0; }
-  100% { opacity:1; }
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
+
 
 /*
   ### MAIN

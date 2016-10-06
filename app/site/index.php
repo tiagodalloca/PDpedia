@@ -15,7 +15,7 @@
 <body>
   <script src="../../lib/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
   <script src="../../lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-  <script src="js/index.js" charset="utf-8"></script>
+  <script src="js/master.js" charset="utf-8"></script>
   <script src="../../api/apiClient.js" type="text/javascript"></script>
   <script src="../../api/formatar.js" type="text/javascript"></script>
 
