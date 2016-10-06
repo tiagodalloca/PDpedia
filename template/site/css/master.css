@@ -77,7 +77,7 @@ body {
 .descricao {
   margin-bottom: 100px;
   padding-left: 0px;
-  background-color: rgba(0, 112, 192, 0.82);
+  background-color: rgb(0, 112, 192);
   font-weight: lighter;
 }
 
