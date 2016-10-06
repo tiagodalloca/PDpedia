@@ -14,13 +14,6 @@ $("a").click(function(e) {
     goToByScroll(this.id);
 });
 
-$(function(){
-    $("#maquina-de-escrever").typed({
-      strings: ["Descubra", "Registre", "Compartilhe", "E muito mais", "Com o PDpedia"],
-      typeSpeed: 0
-    });
-});
-
 
 /*
   Contante que armazena os métodos de cada uma das páginas separadamente

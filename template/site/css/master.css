@@ -132,6 +132,17 @@ body {
   height: 100vh;
 }
 
+#codigo-escrevendo{
+  height: 100vh;
+}
+#maquina-de-escrever{
+  margin-top: 70px;
+  font-family: monospace;
+  font-size: 10px;
+  float: left;
+  color: rgba(172, 172, 172, 0.8);
+}
+
 .apresentacao {
   position: absolute;
   top: 50%;
@@ -149,16 +160,13 @@ body {
 }
 
 #hero h3{
-  text-align: left;
+  text-align: center;
   min-height: 30px;
   /*border-bottom: 1px solid rgb(77, 77, 77);*/
   padding-bottom: 4px;
-  font-family: monospace;
+  font-weight: 600;
 }
 
-#maquina-de-escrever{
-  float: left;
-}
 .typed-cursor{
   float: left;
   color: rgb(208, 14, 43);
