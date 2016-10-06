@@ -62,6 +62,10 @@ body {
   ### DESCRICAO
 */
 
+#gato{
+
+}
+
 .descricao {
   min-height: 500px;
   height: 100vh;
@@ -129,16 +133,19 @@ body {
 }
 
 #codigo-escrevendo {
+  margin-top: 70px;
   height: 100vh;
 }
 
 #maquina-de-escrever {
   white-space:pre;
-  margin-top: 70px;
   font-family: monospace;
   font-size: 10px;
-  float: left;
   color: rgba(172, 172, 172, 0.8);
+}
+
+#maquina-de-apresentar{
+  white-space:pre;
 }
 
 .apresentacao {
@@ -262,6 +269,7 @@ body {
   background-attachment: scroll;
   background-position: 100% -100%;
   background-size: 200% 200%;
+  background-color: transparent;
 }
 
 #posts-wrapper .list-group .list-group-item.list-heading {
@@ -270,7 +278,7 @@ body {
   border-radius: 0px;
   font-size: 30px;
   font-weight: bold;
-  background-color: white;
+  background-color: transparent;
   color: rgb(34, 34, 34);
   border-top: rgb(34, 34, 34) solid 5px;
   border-bottom: rgb(34, 34, 34) solid 5px;
