@@ -48,7 +48,10 @@ window.onload = () => {
   });
 
   addRow.click((e) =>{
-    aumentarTabelaCriar("tabelaCampos", 123, ["Propriedade", "?"])
+    aumentarTabelaCriar("tabelaCampos", "p-1", ["Propriedade", "..."])
+  });
+  removeRow.click((e) =>{
+    diminuirTabelaCriar("tabelaCampos", "p-1", ["Propriedade", "..."])
   });
 };
 
