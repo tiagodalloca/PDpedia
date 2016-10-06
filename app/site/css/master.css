@@ -107,30 +107,34 @@ body {
 }
 
 #posts-wrapper .list-group .list-group-item.artigo:hover{
-  background-position: 100% 100%;
-  color: white;
+  transform: rotateY(30deg);
+  color: rgb(185, 33, 0);
 }
 
 #posts-wrapper .list-group .list-group-item.biografia:hover{
-  background-position: 100% 100%;
-  color: white;
+  transform: rotateY(30deg);
+  color: rgb(0, 185, 35);
 }
 
 #posts-wrapper .list-group .list-group-item.acontecimento:hover{
-  background-position: 100% 100%;
-  color: white;
+  transform: rotateY(30deg);
+  color: rgb(33, 105, 227);
 }
 
 #posts-wrapper .list-group .list-group-item.artigo{
-  background-image: repeating-linear-gradient(to left , rgb(159, 10, 0), rgb(159, 10, 0));
+  /*background-image: repeating-linear-gradient(to left , rgb(159, 10, 0), rgb(159, 10, 0));*/
+  /*color: rgb(185, 33, 0);*/
 }
 
 #posts-wrapper .list-group .list-group-item.biografia{
-  background-image: repeating-linear-gradient(to left , rgb(0, 135, 30), rgb(0, 135, 30));
+  /*background-image: repeating-linear-gradient(to left , rgb(0, 135, 30), rgb(0, 135, 30));*/
+  /*color: rgb(0, 185, 35);*/
+
 }
 
 #posts-wrapper .list-group .list-group-item.acontecimento{
-  background-image: repeating-linear-gradient(to left , rgb(18, 25, 122), rgb(18, 25, 122));
+  /*background-image: repeating-linear-gradient(to left , rgb(18, 25, 122), rgb(18, 25, 122));*/
+  /*color: rgb(33, 105, 227);*/
 }
 
 #posts-wrapper .list-group-item{
