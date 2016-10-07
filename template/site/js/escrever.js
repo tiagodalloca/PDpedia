@@ -51,7 +51,7 @@ window.onload = () => {
     aumentarTabelaCriar("tabelaCampos", "p-1", ["Propriedade", "..."])
   });
   removeRow.click((e) =>{
-    diminuirTabelaCriar("tabelaCampos", "p-1", ["Propriedade", "..."])
+    diminuirTabelaCriar("tabelaCampos")
   });
 };
 
@@ -59,10 +59,22 @@ window.onload = () => {
 function aumentarTabelaMontar(IDTabela, campo) {
   var tab = document.getElementById(IDTabela).tBodies[0];
   var x = tab.innerHTML.split("  ");
-  x.push("<tr><td>" + campo.nome + "</td><td>" + campo.valor + "</td></tr>  ");
+  x.push("<tr><td>" + campo.nome + "</td><td>" + campo.valor + "</td></tr>&nbsp;&nbsp;");
   tab.innerHTML = "";
   for (var i = 0; i <= x.length - 1; i++) {
     tab.innerHTML += x[i];
+  }
+}
+
+function diminuirTabelaCriar(IDTabela){
+  var tab = document.getElementById(IDTabela).tBodies[0];
+  var x = [];
+  for (var i = 0; i < tab.children.length; i++) {
+    x.push(tab.children[i]);
+  }
+  tab.innerHTML="";
+  for (var i = 0; i < x.length - 1; i++) {
+    tab.innerHTML += x[i].outerHTML;
   }
 }
 
