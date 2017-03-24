@@ -19,4 +19,4 @@ Elas estão sendo utilizadas pois os desenvolvedores do projeto sabem utilizar b
 
 ## Previsão v1.0
 
-A primeira versão oficial do PDpedia está programada para estar pronta no final do ano de 2016, mas não será a última versão do projeto(tudo pode acontecer).
+A primeira versão oficial do PDpedia está programada para estar pronta ~no final do ano de 2016~ (sem data prevista), mas não será a última versão do projeto(tudo pode acontecer).
